@@ -1,0 +1,150 @@
+/* Typography and colors */
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 900;
+  color: #F9FAF8;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 900;
+  color: #1F2937;
+}
+
+p {
+  font-size: 18px;
+}
+
+/* Spacing */
+body {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  padding: 64px 200px 96px 200px;
+}
+
+.container-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-row {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style */
+header, footer {
+  background-color: #1F2937;
+}
+
+header.container {
+  color: #F9FAF8;
+  padding-top: 0;
+}
+
+button {
+  font-size: 18px;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 16px 0;
+  margin-bottom: 96px;
+}
+
+nav .logo {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+nav ul.container-row {
+  gap: 32px;
+}
+
+nav ul li {
+  list-style: none;
+  font-weight: 200;
+  color: #E5E7EB;
+}
+
+header .img-placeholder {
+  flex-shrink: 0;
+  height: 200px;
+  width: 600px;
+  background-color: #E5E7EB;
+}
+
+header button {
+  background-color: #3882F6;
+  color: #E5E7EB;
+  border: 0;
+}
+
+.main-content {
+  text-align: center;
+}
+
+.card .img-placeholder {
+  height: 200px;
+  width: 200px;
+  background-color: #fff;
+  border: solid 4px #3882F6;
+  border-radius: 8px;
+}
+
+.quote {
+  background-color: #E5E7EB;
+}
+
+.quote p {
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 200;
+  color: #1F2937;
+  margin-left: 64px;
+}
+
+.quote .author {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  text-align: right;
+}
+
+.blue-cta {
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 64px;
+  background-color: #3882F6;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.blue-cta button {
+  background-color: #3882F6;
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: 600;
+}
+
+footer.container {
+  text-align: center;
+  padding: 32px 200px;
+  color: #fff;
+}
