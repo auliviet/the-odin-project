@@ -1,5 +1,6 @@
 # odin-etch_a_sketch
-Exercise for the Odin Project on JavaScript foundations
+Exercise for the Odin Project - Foundations on JavaScript foundations
+
 
 ## Preview link 
 https://auliviet.github.io/odin-etch_a_sketch/
