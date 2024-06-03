@@ -1,7 +1,10 @@
 # odin-rock_paper_scissors
-Exercise for the Odin Project on JavaScript foundations
+Exercise for the Odin Project - Foundations on JavaScript Foundations
 
-## Pseudo code
+## Preview link
+[ To be added ]
+
+## Instructions
 1. Create function getComputerChoice that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’
 1.2. Store the result in computerSelection
 2. Get playerSelection from the user
