@@ -2,7 +2,7 @@
 Exercise for the Odin Project - Foundations on JavaScript Foundations
 
 ## Preview link
-[ To be added ]
+https://auliviet.github.io/odin-rock_paper_scissors/
 
 ## Instructions
 1. Create function getComputerChoice that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’
