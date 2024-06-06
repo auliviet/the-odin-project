@@ -150,11 +150,16 @@ body {
   padding: 32px 16px;
   background-color: #f0f9ff;
 
-  & .projects {
-    grid-area: 1 / 1 / -1 / 3;
+  & .projects,
+  & .announcements,
+  & .trending {
     display: flex;
     flex-flow: column;
     gap: 16px;
+  }
+
+  & .projects {
+    grid-area: 1 / 1 / -1 / 3;
 
     & .card-wrapper {
       flex: 1;
@@ -167,6 +172,7 @@ body {
         padding: 16px;
         display: flex;
         flex-flow: column;
+        gap: 8px;
         background-color: #fff;
         border-radius: 16px;
         border-left: 16px solid #facc15;
@@ -174,6 +180,7 @@ body {
 
         & p {
           font-size: 12px;
+          color: #64748b;
         }
 
         & .card-actions {
@@ -189,8 +196,28 @@ body {
   }
 
   & .announcements {
-    background-color: white;
 
+    & .announcements-wrapper {
+      padding: 16px;
+      background-color: #fff;
+      border-radius: 16px;
+      box-shadow: #e2e8f0 0px 4px 4px;
+
+      & .announcement {
+        font-size: 12px;
+        padding: 16px 0;
+        border-bottom: 1px solid #e2e8f0;
+
+        & p {
+          margin-top: 8px;
+          color: #64748b;
+        }
+      }
+
+      & .announcement:last-of-type {
+        border-bottom: none;
+      }
+    }
   }
 
   & .trending {
