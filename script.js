@@ -139,6 +139,7 @@ class Library {
     let button = document.createElement("button");
 
     button.textContent = buttonName;
+    button.className = buttonName.toLowerCase();
     button.setAttribute("value", buttonName);
     button.setAttribute("data", index);
 
