@@ -1,3 +1,7 @@
+/*
+    - Get player's name from input
+    - Display winner on page
+*/
 function Players(name, symbol) {
 
     // Players return value
@@ -7,7 +11,7 @@ function Players(name, symbol) {
     }
 }
 
-function Gameboard() {
+const board = (function(){
     const gridSize = 3;
     const board = [];
 
@@ -18,6 +22,7 @@ function Gameboard() {
             board[i].push(new Cell());
         }
     }
+
 
     // Create the cell objects to fill the board
     function Cell () {
@@ -45,6 +50,7 @@ function Gameboard() {
         }
     }
 
+
     // Add a token from the player
     function addToken(player, row, column) {
         // Validate the row and column input
@@ -66,6 +72,7 @@ function Gameboard() {
         }
     }
     
+
     // Check winning conditions
     function checkWinner() {
 
@@ -98,39 +105,40 @@ function Gameboard() {
             board[0][2].getValue() != null) {
             return true;
         }
-         
+        
         return false;
     }
     
-    // Return the board array
+
+    // Return the board array with the content of each cell
     function getBoard() {
-        debuggingBoard = []
+        boardContent = []
         for (i = 0; i < gridSize; i++) {
-            debuggingBoard[i] = [];
+            boardContent[i] = [];
             for (j = 0; j < gridSize; j++) {
                 if (board[i][j].getValue() == null) {
-                    debuggingBoard[i].push(board[i][j].getValue());
+                    boardContent[i].push(board[i][j].getValue());
                 }
                 else {
-                    debuggingBoard[i].push(board[i][j].getValue().symbol); 
+                    boardContent[i].push(board[i][j].getValue().symbol); 
                 }
                 
             }
         }
 
-        return debuggingBoard;
+        return boardContent;
     }
 
-    // Gameboard return values
+    // BOARD RETURN VALUES
     return {
         getBoard,
         addToken,
         checkWinner
     }
-}
 
-function GameController() {
-    const board = Gameboard();
+}) ();
+
+const gameController = (function () {
     
     let player1Name = "Player 1";
     const player1 = Players(player1Name, "X");
@@ -140,20 +148,16 @@ function GameController() {
     
     let activePlayer = player1;
 
+    // Change active player to let the other player play
     function switchPlayer() {
         activePlayer = activePlayer === player1 ? player2 : player1;
     }
 
-    function printBoard() {
-        console.log(board.getBoard());
-    }
 
+    // Add a token on the board from the active player
     function playRound(row, column) {
-
-        // Validate input if correct
-        if (board.addToken(activePlayer, row, column)) {
-
-            printBoard();
+        // Validate input if correct and no player has won yet
+        if (!board.checkWinner() && board.addToken(activePlayer, row, column)) {
 
             // Check for winning condition
             if (board.checkWinner()) {
@@ -169,19 +173,69 @@ function GameController() {
         }
     }
 
-    // Print the initial board
-    console.log(`${activePlayer.name}'s turns`)
-    printBoard();
-
+    // GAMECONTROLLER RETURN VALUES
     return {
-        playRound
+        playRound,
+        getBoard: board.getBoard
     }
 
-}
+}) ();
 
-const game = GameController();
-// game.playRound(0,0);
-// game.playRound(1,1);
-// game.playRound(0,1);
-// game.playRound(1,2);
-// game.playRound(0,2);
+const displayController = (function () {
+
+    // Display the board on the HTML
+    function displayBoard() {
+        const board = gameController.getBoard()
+        const boardDiv = document.querySelector(".board");
+        boardDiv.textContent = "";
+
+        board.forEach((row, rowIndex) => {
+            createRow(row, rowIndex);
+        });
+
+
+        // Create a new row on the grid
+        function createRow(row, rowIndex) {
+            let boardRow = document.createElement("div");
+                boardRow.className = "row";
+    
+                row.forEach((cell, cellIndex) => {
+                    boardRow.append(createCell(rowIndex, cellIndex));
+                });
+                boardDiv.append(boardRow);
+        }
+    
+
+        // Create a new cell inside a row
+        function createCell(rowIndex, cellIndex) {
+            let newCell = document.createElement("div");
+            newCell.className = `cell ${rowIndex} ${cellIndex}`;
+            newCell.textContent = board[rowIndex][cellIndex];
+            newCell.addEventListener("click", eventPlayRound)
+            
+            return newCell;
+        }    
+    }
+
+    
+    // DISPLAYCONTROLLER EVENT CONTROLLERS
+
+    // Initiate the gameController.playRound function when a user clicks on a cell
+    function eventPlayRound(event) {
+        let cellClasses = event.target.className.split(" ");
+            
+        let cellRow = cellClasses[1];
+        let cellColumn = cellClasses[2];
+        
+        gameController.playRound(cellRow, cellColumn);
+        
+        displayBoard();
+    }
+
+    return {
+        displayBoard
+    }
+
+})();
+
+displayController.displayBoard();
