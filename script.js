@@ -1,7 +1,7 @@
 /*
     - Get player's name from input
-    - Display winner on page
 */
+
 function Players(name, symbol) {
 
     // Players return value
@@ -55,13 +55,11 @@ const board = (function(){
     function addToken(player, row, column) {
         // Validate the row and column input
         if (row >= gridSize || column >= gridSize) {
-            console.log("Not a valid input");
             return false;
         }
 
         // Validate the cell is empty
         else if (!board[row][column].setValue(player)) {
-            console.log("This cell is already taken");
             return false;
         }
         
@@ -147,6 +145,7 @@ const gameController = (function () {
     const player2 = Players(player2Name, "O");
     
     let activePlayer = player1;
+    let winner = null;
 
     // Change active player to let the other player play
     function switchPlayer() {
@@ -161,21 +160,25 @@ const gameController = (function () {
 
             // Check for winning condition
             if (board.checkWinner()) {
-                console.log(`${activePlayer.name} wins`);
+                winner = activePlayer.name;
                 return;
             }
 
 
             // Switch to next player
             switchPlayer();
-            console.log(`${activePlayer.name}'s turns`)
             return; 
         }
     }
 
+    function getWinner() {
+        return winner;
+    };
+
     // GAMECONTROLLER RETURN VALUES
     return {
         playRound,
+        getWinner,
         getBoard: board.getBoard
     }
 
@@ -216,6 +219,15 @@ const displayController = (function () {
             return newCell;
         }    
     }
+    
+    
+    function displayWinner() {
+        if (gameController.getWinner() != null) {
+            let winnerName = gameController.getWinner();
+            let winnerDiv = document.querySelector(".winner");
+            winnerDiv.textContent = `${winnerName} wins`;
+        }
+    }
 
     
     // DISPLAYCONTROLLER EVENT CONTROLLERS
@@ -230,6 +242,7 @@ const displayController = (function () {
         gameController.playRound(cellRow, cellColumn);
         
         displayBoard();
+        displayWinner();
     }
 
     return {
