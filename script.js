@@ -1,15 +1,6 @@
 /*
-    - Get player's name from input
+    - Add reset button
 */
-
-function Players(name, symbol) {
-
-    // Players return value
-    return {
-        name,
-        symbol
-    }
-}
 
 const board = (function(){
     const gridSize = 3;
@@ -138,14 +129,26 @@ const board = (function(){
 
 const gameController = (function () {
     
-    let player1Name = "Player 1";
-    const player1 = Players(player1Name, "X");
+    // Initiate players with default values
+    let player1 = {
+        name: "Player 1",
+        symbol: "X"
+    }
 
-    let player2Name = "Player 2";
-    const player2 = Players(player2Name, "O");
+    let player2 = {
+        name: "Player 2",
+        symbol: "Y"
+    }
     
     let activePlayer = player1;
     let winner = null;
+
+    // Overwrite the default values for player names
+    function setPlayerNames(player1Name, player2Name) {
+        player1.name = player1Name;
+        player2.name = player2Name;
+    }
+
 
     // Change active player to let the other player play
     function switchPlayer() {
@@ -160,10 +163,11 @@ const gameController = (function () {
 
             // Check for winning condition
             if (board.checkWinner()) {
+
+                // Set the name of the winning player
                 winner = activePlayer.name;
                 return;
             }
-
 
             // Switch to next player
             switchPlayer();
@@ -171,20 +175,45 @@ const gameController = (function () {
         }
     }
 
+
+    // Return the name of the winning player
     function getWinner() {
         return winner;
     };
 
+
+    // Return the players of the game
+    function getPlayers() {
+        return {
+            player1,
+            player2
+        }
+    }
+
     // GAMECONTROLLER RETURN VALUES
     return {
+        setPlayerNames,
         playRound,
         getWinner,
+        getPlayers,
         getBoard: board.getBoard
     }
 
 }) ();
 
 const displayController = (function () {
+
+    // Get the names of the player
+    function getPlayerNames() {
+        let submitButton = document.querySelector("#submit");
+        submitButton.addEventListener("click", (event) => {
+            eventSubmitNames(event);
+
+            // Hide the form
+            let form = document.querySelector("form");
+            form.style.display = "none";
+        });
+    }
 
     // Display the board on the HTML
     function displayBoard() {
@@ -221,11 +250,33 @@ const displayController = (function () {
     }
     
     
+    // Display the name of the winner on the HTML
     function displayWinner() {
         if (gameController.getWinner() != null) {
             let winnerName = gameController.getWinner();
             let winnerDiv = document.querySelector(".winner");
             winnerDiv.textContent = `${winnerName} wins`;
+        }
+    }
+
+
+    // Display players
+    function displayPlayers() {
+        let players = gameController.getPlayers()
+
+        // Display the players on the page
+        for (player in players) {
+            let playerDiv = document.querySelector(`.${player}`);
+            
+            let name = document.createElement("div");
+            name.className = "player-name";
+            name.textContent = players[player].name;
+            playerDiv.append(name);
+
+            let symbol = document.createElement("div");
+            symbol.className = "player-symbol";
+            symbol.textContent = players[player].symbol;
+            playerDiv.append(symbol);
         }
     }
 
@@ -245,10 +296,19 @@ const displayController = (function () {
         displayWinner();
     }
 
-    return {
-        displayBoard
+    // Get the player's name when submitting the form
+    function eventSubmitNames(event) {
+        event.preventDefault(); // prevent reloading the page 
+
+        let player1Name = document.querySelector("#player1").value;
+        let player2Name = document.querySelector("#player2").value;
+
+        // Display the player names on the page
+        gameController.setPlayerNames(player1Name, player2Name);
+        displayPlayers();
     }
 
-})();
+    getPlayerNames();
+    displayBoard();
 
-displayController.displayBoard();
+})();
