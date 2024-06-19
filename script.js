@@ -1,7 +1,3 @@
-/*
-    - Add reset button
-*/
-
 const board = (function(){
     const gridSize = 3;
     const board = [];
@@ -147,7 +143,7 @@ const gameController = (function () {
 
     let player2 = {
         name: "Player 2",
-        symbol: "Y"
+        symbol: "O"
     }
     
     let activePlayer = player1;
@@ -190,6 +186,11 @@ const gameController = (function () {
     function getWinner() {
         return winner;
     };
+    
+    // Reset the winner
+    function resetWinner() {
+        winner = null;
+    }
 
 
     // Return the players of the game
@@ -205,6 +206,7 @@ const gameController = (function () {
         setPlayerNames,
         playRound,
         getWinner,
+        resetWinner,
         getPlayers,
         getBoard: board.getBoard,
         resetBoard: board.resetBoard
@@ -223,6 +225,10 @@ const displayController = (function () {
             // Hide the form
             let form = document.querySelector("form");
             form.style.display = "none";
+
+            // Display the board
+            let boardWrapper = document.querySelector(".board-wrapper");
+            boardWrapper.style.display = "flex";
         });
     }
 
@@ -235,6 +241,10 @@ const displayController = (function () {
         board.forEach((row, rowIndex) => {
             createRow(row, rowIndex);
         });
+
+        const winnerDiv = document.createElement("div");
+        winnerDiv.className = "winner";
+        boardDiv.append(winnerDiv);
 
         const resetButton = document.querySelector(".reset");
         resetButton.addEventListener("click", eventReset);
@@ -270,6 +280,7 @@ const displayController = (function () {
             let winnerName = gameController.getWinner();
             let winnerDiv = document.querySelector(".winner");
             winnerDiv.textContent = `${winnerName} wins`;
+            winnerDiv.style.display = "flex";
         }
     }
 
@@ -327,6 +338,11 @@ const displayController = (function () {
         event.preventDefault(); // overwrite the default reset function
         gameController.resetBoard();
         displayBoard();
+
+        // Hide the winner if any
+        let winnerDiv = document.querySelector(".winner");
+        winnerDiv.style.display = "none";
+        gameController.resetWinner();
     }
 
     getPlayerNames();
