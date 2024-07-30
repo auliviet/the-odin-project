@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { Priority } from '/src/scripts/tasks';
+import { tasks } from '/src';
 
 import "./styles.css";
 
@@ -10,7 +10,6 @@ export class Card {
         this.dueDate = data.dueDate; 
         this.description = data.description;
         this.priority = data.priority;
-        this.project = data.project;
         this.isComplete = data.isComplete;
 
         return this.#render();
@@ -84,14 +83,21 @@ export class Card {
         select.name = "priority";
         select.id = "priority";
 
-        for (let index in Priority.values) {
-            let priority = Priority.values[index];
+        let priorities = [
+            "high priority",
+            "medium priority",
+            "low priority",
+            "no priority"
+        ]
+
+        for (let index in priorities) {
+            let priority = priorities[index];
 
             let option = document.createElement("option");
-            option.value = priority;
+            option.value = index;
             option.textContent = priority;
 
-            if (priority == this.priority.value) {
+            if (index == this.priority) {
                 option.selected = true;
             }
 
@@ -119,14 +125,6 @@ export class Card {
         return description;
     }
 
-    /* #project() {
-        let project = document.createElement("div");
-        project.className = "card__project-pill";
-        project.textContent = `#${this.project}`;
-
-        return project;
-    } */
-
     #buttons() {
         let buttonsRow = document.createElement("div");
         buttonsRow.className = "card__buttons";
@@ -150,8 +148,7 @@ export class Card {
         section.append(this.#title());
         if (this.description != null) {
             section.append(this.#description());
-        }
-        section.append(this.#project()); */
+        } */
 
         return card;
     }
@@ -208,7 +205,9 @@ class SaveButton extends Button {
         event.preventDefault();
         console.log("ID = ", this.id)
         
-        this.#getFormData();
+        let task = this.#getFormData();
+        console.log("task =", task)
+        tasks.updateTask(task, this.id);
     }
 
     #getFormData() {
@@ -217,15 +216,20 @@ class SaveButton extends Button {
         let dueDate = form.dueDate.value;
         let description = form.description.value;
         let priority = form.priority.value;
-        //let project = form.project.value;
         //let isComplete = form.isComplete.value;
 
-        console.log(title);
-        console.log(dueDate);
-        console.log(description);
-        console.log(priority);
-        //console.log(project);
+        //console.log(title);
+        //console.log(dueDate);
+        //console.log(description);
+        //console.log(priority);
         //console.log(isComplete);
+
+        return {
+            title,
+            dueDate,
+            description,
+            priority
+        }
     }
 }
 
