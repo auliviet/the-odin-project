@@ -20,10 +20,22 @@ export class Card {
         form.name = `task-${this.id}`;
         form.id = `task-${this.id}`;
 
-        form.append(this.#formHeader());
-        form.append(this.#title());
-        form.append(this.#description());
-        form.append(this.#buttons());
+        let formHeader = this.#formHeader();
+        let title = this.#title();
+        let description = this.#description();
+        let buttons = this.#buttons();
+
+        form.append(
+            formHeader,
+            title,
+            description,
+            buttons
+        );
+
+        form.addEventListener("click", () => {
+            this.#displayButtonsEvent(buttons);
+            this.#displayDescriptionEvent(description)
+        })
 
         return form;
     }
@@ -121,6 +133,10 @@ export class Card {
             "description", 
             this.description
         );
+
+        if (this.description == null || this.description == "") {
+            description.style.display = "none";
+        }
         
         return description;
     }
@@ -151,6 +167,14 @@ export class Card {
         } */
 
         return card;
+    }
+
+    #displayButtonsEvent(buttons) {
+        buttons.style.display = "flex";
+    }
+
+    #displayDescriptionEvent(description) {
+        description.style.display = "grid";
     }
 }
 
@@ -217,6 +241,7 @@ class SaveButton extends Button {
         event.preventDefault();
         
         let task = this.#getFormData();
+        console.log(task);
         tasks.updateTask(task, this.id);
     }
 
