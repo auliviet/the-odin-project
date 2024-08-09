@@ -110,6 +110,56 @@ export class Card {
     }
 }
 
+export class NewCard {
+    constructor(dueDate = new Date()) {
+        this.dueDate = dueDate;
+
+        return this.#render(); 
+    }
+
+    #ctaCard() {
+        let card = document.createElement("li");
+        card.className = "card card--new";
+
+        let icon = document.createElement("div");
+        icon.className = "card__add-symbol";
+        icon.textContent = "+";
+        card.append(icon);
+
+        let cta = document.createElement("h3");
+        cta.className = "card__add-cta";
+        cta.textContent = "Add new";
+        card.append(cta);
+
+        return card;
+    }
+
+    #editableCard() {
+        let id = tasks.length;
+
+        let card = new Card({
+            id: id,
+            dueDate: this.dueDate
+        })
+
+        return card;
+    }
+
+    #render() {
+        let card = document.createElement("div");
+
+        let callToAction = this.#ctaCard();
+        card.append(callToAction)
+
+        callToAction.addEventListener("click", (event) => {
+            callToAction.style.display = "none";
+            card.append(this.#editableCard())
+        })
+
+        return card;
+    }
+}
+
 class Input {
     constructor(type, name, value = "") {
         let input = document.createElement("input");
