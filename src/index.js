@@ -18,6 +18,7 @@ import './styles.css';
 export class Todo {
     constructor(data) {
         this.tasks = [];
+        this.filterByCompletionStatus = false;
 
         for (let id in data) {
             let currentTask = data[id];
@@ -46,6 +47,16 @@ export class Todo {
         new DOM(this); 
     }
 
+    set filterComplete(bool) {
+        this.filterByCompletionStatus = bool;
+
+        new DOM(this);
+    }
+
+    get filterComplete() {
+        return this.filterByCompletionStatus;
+    }
+
     get length() {
         return this.tasks.length;
     }
@@ -53,7 +64,7 @@ export class Todo {
     get overdue() {
         let startDate = new DateOnly(1);
         let endDate = endOfYesterday();
-        let overdueTasks = this.#filterByDate(startDate, endDate);
+        let overdueTasks = this.#sortByDate(startDate, endDate);
 
         return this.#sortByPriority(overdueTasks);
     }
@@ -61,7 +72,7 @@ export class Todo {
     get today() {
         let startDate = startOfToday();
         let endDate = endOfToday();
-        let todayTasks = this.#filterByDate(startDate, endDate);
+        let todayTasks = this.#sortByDate(startDate, endDate);
 
         return this.#sortByPriority(todayTasks);
     }
@@ -69,7 +80,7 @@ export class Todo {
     get thisWeek() {
         let startDate = startOfTomorrow();
         let endDate = endOfWeek(startOfToday(), { weekStartsOn: 1 }); 
-        let thisWeekTasks = this.#filterByDate(startDate, endDate);
+        let thisWeekTasks = this.#sortByDate(startDate, endDate);
 
         return this.#sortByPriority(thisWeekTasks);
     }
@@ -80,7 +91,7 @@ export class Todo {
 
         let startDate = nextWeek; 
         let endDate = endOfMonth(startOfToday());
-        let thisMonthTasks = this.#filterByDate(startDate, endDate);
+        let thisMonthTasks = this.#sortByDate(startDate, endDate);
 
         return this.#sortByPriority(thisMonthTasks);
     }
@@ -92,9 +103,27 @@ export class Todo {
 
         let startDate = nextMonth;
         let endDate = endOfTime;
-        let laterTasks = this.#filterByDate(startDate, endDate);
+        let laterTasks = this.#sortByDate(startDate, endDate);
 
         return this.#sortByPriority(laterTasks);
+    }
+
+    #filterByCompletionStatus() {
+        let tasksFiltered = [];
+
+        if (this.filterByCompletionStatus == false) {
+            for (let task in this.tasks) {
+                let currentTask = this.tasks[task];
+    
+                if (currentTask.isComplete == false) {
+                    tasksFiltered.push(currentTask);
+                }
+            }
+        } else {
+            tasksFiltered = this.tasks;
+        }  
+
+        return tasksFiltered;
     }
 
     #sortByPriority(tasks = this.tasks) {
@@ -104,23 +133,24 @@ export class Todo {
         return tasksCompleted;
     }
 
-    #filterByDate(startDate, endDate) {
+    #sortByDate(startDate, endDate) {
         startDate = new DateOnly(startDate);
         endDate = new DateOnly(endDate);
 
-        let tasksFiltered = [];
+        let tasksFiltered = this.#filterByCompletionStatus();
+        let tasksSorted = []; 
 
-        for (let task in this.tasks) {
-            let currentTask = this.tasks[task];
+        for (let task in tasksFiltered) {
+            let currentTask = tasksFiltered[task];
             let dueDate = new DateOnly(currentTask.dueDate);
 
             if (dueDate >= startDate &&
                 dueDate <= endDate) {
-                    tasksFiltered.push(currentTask);
+                    tasksSorted.push(currentTask);
                 }
         }
 
-        return tasksFiltered;
+        return tasksSorted;
     }
 }
 
