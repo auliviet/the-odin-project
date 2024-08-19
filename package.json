@@ -2,7 +2,8 @@
   "name": "odin-restaurant_page",
   "version": "1.0.0",
   "description": "Exercise for the Odin Project - Full-stack JavaScript on ES6 Modules and Webpack",
-  "main": "index.js",
+  "private": "true",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
@@ -21,7 +22,9 @@
   },
   "homepage": "https://github.com/auliviet/odin-restaurant_page#readme",
   "devDependencies": {
+    "@eslint/js": "^9.9.0",
     "css-loader": "^7.1.2",
+    "eslint": "^9.9.0",
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",
     "style-loader": "^4.0.0",
