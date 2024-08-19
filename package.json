@@ -5,11 +5,10 @@
   "private": "true",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --watch",
-    "build": "webpack",
-    "start": "webpack serve --open",
-    "preview": "git subtree push --prefix dist origin gh-pages"
+    "dev": "webpack serve --open-app-name 'Firefox Developer Edition' --config webpack.dev.js",
+    "lint": "npx eslint src/",
+    "build": "webpack --config webpack.prod.js",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "repository": {
     "type": "git",
