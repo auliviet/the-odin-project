@@ -1,22 +1,24 @@
 import "./index.css";
 
 export default function home() {
-    let container = document.querySelector("#content");
-    container.className = "home";
-    container.textContent = "";
+  const container = document.querySelector("#content");
+  container.className = "home";
+  container.textContent = "";
 
+  const headings = document.createElement("div");
+  headings.className = "home__headings";
 
-    let headings = document.createElement("div");
-    headings.className = "home__headings";
+  const title = document.createElement("h1");
+  title.textContent = "Good times. Great pizza.";
+  headings.append(title);
 
+  const address = document.createElement("h2");
+  address.textContent = "125 George Street, Sydney, NSW";
+  headings.append(address);
 
-    const title = document.createElement("h1");
-    title.textContent = "The Krusty Krab";
-    headings.append(title);
+  const country = document.createElement("h2");
+  container.textContent = "Australia";
+  headings.append(country);
 
-    const subTitle = document.createElement("h2");
-    subTitle.textContent = "Come spend your money here!";
-    headings.append(subTitle);
-
-    container.append(headings);
+  container.append(headings);
 }
