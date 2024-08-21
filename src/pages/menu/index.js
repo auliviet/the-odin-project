@@ -1,75 +1,78 @@
-import "./index.css";
+//import "./index.css";
 
 export default function menu() {
-    let container = document.querySelector("#content");
-    container.className = "menu"
-    container.textContent = "";
+  let container = document.querySelector("#content");
+  container.className = "menu";
+  container.textContent = "";
 
-    let menuList1 = [
-        {name: "Krabby Patty", price: "1.25"},
-        {name: "Krabby Patty w/ sea cheese", price: "1.50"},
-        {name: "Double Krabby Patty", price: "2.00"},
-        {name: "Double Krabby Patty w/ sea cheese", price: "2.25"},
-        {name: "Tripe Krabby Patty", price: "3.00"},
-        {name: "Tripe Krabby Patty w/ sea cheese", price: "3.25"},
-        {name: "Small Coral Bits", price: "1.00"},
-        {name: "Medium Coral Bits", price: "1.25"},
-        {name: "Large Coral Bits", price: "1.50"},
-        {name: "Kelp Rings", price: "1.50"},
-        {name: "Salty Sauce", price: "0.50"},
-    ]
+  let menuList = [
+    {
+      name: "Pepperoni",
+      image: "/assets/img/pepperoni.png",
+      price: "$15",
+      ingredients: "tomato base, mozarella, mild pepperoni, oregano",
+    },
+    {
+      name: "Cheesy garlic",
+      image: "assets/img/cheesy-garlic.png",
+      price: "$14",
+      ingredients: "garlic base, extra mozarella",
+    },
+    {
+      name: "Margarita",
+      image: "assets/img/margarita.png",
+      price: "$15",
+      ingredients: "tomato base, extra mozarella",
+    },
+    {
+      name: "Tomato & basil",
+      image: "assets/img/tomato-basil.png",
+      price: "$15",
+      ingredients: "garlic base, mozarella, fresh tomato",
+    },
+    {
+      name: "Prosciutto",
+      image: "assets/img/prosciutto.png",
+      price: "$18",
+      ingredients: "tomato base, mozarella, prosciutto, arugula",
+    },
+    {
+      name: "Napoli",
+      image: "assets/img/napoli.png",
+      price: "$16",
+      ingredients: "tomato base, mozarella, anchovies, cappers",
+    },
+  ];
 
-    let menuList2 = [
-        {name: "Krabby Meal", price: "3.50"},
-        {name: "Double Krabby Meal", price: "3.75"},
-        {name: "Triple Krabby Meal", price: "4.00"},
-        {name: "Salty Sea Dog", price: "1.25"},
-        {name: "Footlong", price: "2.00"},
-        {name: "Sailors Surprise", price: "3.00"},
-        {name: "Golden Loaf", price: "2.00"},
-        {name: "Golden Loaf w/ sauce", price: "2.50"},
-        {name: "Kelp Shake", price: "2.00"},
-        {name: "Small Seafoam Soda", price: "1.00"},
-        {name: "Medium Seafoam Soda", price: "1.25"},
-        {name: "Large Seafoam Soda", price: "1.50"},
-    ]
+  let menu = document.createElement("div");
+  menu.className = "menu";
 
-    let menuWrapper = document.createElement("div");
-    menuWrapper.className = "menu__wrapper";
-    container.append(menuWrapper);
+  menuList.forEach((item) => {
+    let menuItem = document.createElement("div");
+    menuItem.className = "menu__item";
 
-    let menuHeadings = document.createElement("h1");
-    menuHeadings.className = "menu__headings";
-    menuHeadings.textContent = "The Galley Grub";
-    menuWrapper.append(menuHeadings);
+    let picture = document.createElement("img");
+    picture.className = "menu__item-image";
+    picture.src = item.image;
+    menuItem.append(picture);
 
-    let menuLeftColumn = document.createElement("div");
-    menuLeftColumn.className = "menu__left";
-    createMenuColumn(menuList1, menuLeftColumn);
-    menuWrapper.append(menuLeftColumn);
+    let name = document.createElement("h3");
+    name.className = "menu__item-name";
+    name.textContent = item.name;
+    menuItem.append(name);
 
-    let menuRightColumn = document.createElement("div");
-    menuRightColumn.className = "menu__right";
-    createMenuColumn(menuList2, menuRightColumn);
-    menuWrapper.append(menuRightColumn);
+    let price = document.createElement("p");
+    price.className = "menu__item-price";
+    price.textContent = item.price;
+    menuItem.append(price);
 
-    function createMenuColumn(array, container) {
-        for (let item of array) {
-            let menuRow = document.createElement("div");
-            menuRow.className = "menu__row";
+    let ingredients = document.createElement("p");
+    ingredients.className = "menu__item-ingredients";
+    ingredients.textContent = item.ingredients;
+    menuItem.append(ingredients);
 
-            let menuItem = document.createElement("p");
-            menuItem.className = "menu__row-item";
-            menuItem.textContent = item.name.toUpperCase();
-            menuRow.append(menuItem);
+    menu.append(menuItem);
+  });
 
-            let menuPrice = document.createElement("p");
-            menuPrice.className = "menu__row-price";
-            menuPrice.textContent = `$${item.price}`;
-            menuRow.append(menuPrice);
-            
-            container.append(menuRow);
-        }
-    }
-
+  container.append(menu);
 }

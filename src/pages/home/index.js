@@ -1,4 +1,4 @@
-import "./index.css";
+//import "./index.css";
 
 export default function home() {
   const container = document.querySelector("#content");
@@ -13,12 +13,8 @@ export default function home() {
   headings.append(title);
 
   const address = document.createElement("h2");
-  address.textContent = "125 George Street, Sydney, NSW";
+  address.innerHTML = "125 George Street, Sydney, NSW <br>Australia";
   headings.append(address);
-
-  const country = document.createElement("h2");
-  container.textContent = "Australia";
-  headings.append(country);
 
   container.append(headings);
 }
