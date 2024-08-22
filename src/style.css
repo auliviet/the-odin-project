@@ -82,6 +82,7 @@ nav {
 }
 
 .border {
+  flex-shrink: 0;
   background-image: url("./assets/img/pattern.svg");
   background-size: contain;
   width: 100%;
