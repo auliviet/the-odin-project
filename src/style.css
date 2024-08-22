@@ -15,24 +15,22 @@
 
 @font-face {
   font-family: "SignPainter";
-  src: 
-    local("SignPainter"),
-    url("./assets/fonts/SignPainter.woff");
+  src: local("SignPainter"), url("./assets/fonts/SignPainter.woff");
 }
 
 html {
   font-size: 8px;
 
-  @media (min-width: 1024px) {font-size: 10px;}
+  @media (min-width: 1024px) {
+    font-size: 10px;
+  }
 }
 
 :root {
   --black: #222;
-  --red: #B91C1C;
-  --white:#FFF;
+  --red: #b91c1c;
+  --white: #fff;
 }
-
-
 
 body {
   display: flex;
