@@ -6,11 +6,11 @@
 }
 
 @font-face {
-  font-family: "Courier New";
+  font-family: "Courier New Bold";
   src:
     local("Courier New"),
     url("./assets/fonts/Courier_New_Bold.woff") format("woff");
-  font-weight: bold;
+  font-weight: 700;
 }
 
 @font-face {
@@ -30,6 +30,7 @@ html {
 :root {
   --black: #222;
   --red: #b91c1c;
+  --grey: #F5F5F5;
   --white: #fff;
 }
 
@@ -39,6 +40,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  font-size: 2rem;
+  line-height: 4rem;
 }
 
 nav {
@@ -89,7 +92,7 @@ nav {
   height: 4rem;
 }
 
-.content-wrapper {
+#content-wrapper {
   flex: 1;
   display: flex;
   flex-flow: column;
@@ -97,14 +100,15 @@ nav {
   & #content {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
-    padding: 0 4rem;
+    padding: 4rem;
   
     @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
       width: 80%;
       margin: auto;
-      padding: 0;
+      padding: 4rem 0;
     }
   }
 }
