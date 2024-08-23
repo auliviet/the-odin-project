@@ -128,3 +128,8 @@ h2 {
   line-height: 6rem;
   font-weight: bold;
 }
+
+.credits {
+  text-align: center;
+  color: var(--black);
+}

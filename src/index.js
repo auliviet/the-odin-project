@@ -5,6 +5,7 @@ import "./style.css";
 import home from "./pages/home";
 import menu from "./pages/menu";
 import about from "./pages/about";
+import credits from "./pages/credits";
 
 // Event listeners
 let buttons = document.querySelectorAll("button");
@@ -29,5 +30,8 @@ for (let button of buttons) {
       break;
   }
 }
+
+let credtsLink = document.querySelector(".credits");
+credtsLink.addEventListener("click", credits);
 
 home();
