@@ -1,8 +1,10 @@
-//import "./index.css";
+import "./index.css";
 
 export default function menu() {
+  let wrapper = document.querySelector("#content-wrapper");
+  wrapper.className = "menu";
+
   let container = document.querySelector("#content");
-  container.className = "menu";
   container.textContent = "";
 
   let menuList = [
@@ -44,35 +46,40 @@ export default function menu() {
     },
   ];
 
-  let menu = document.createElement("div");
-  menu.className = "menu";
-
   menuList.forEach((item) => {
     let menuItem = document.createElement("div");
     menuItem.className = "menu__item";
 
+    let imageContainer = document.createElement("div");
+    imageContainer.className = "menu__item-image-container";
+
     let picture = document.createElement("img");
     picture.className = "menu__item-image";
     picture.src = item.image;
-    menuItem.append(picture);
+    imageContainer.append(picture);
+
+    menuItem.append(imageContainer);
+
+    let menuInformation = document.createElement("div");
+    menuInformation.className = "menu__item-information";
 
     let name = document.createElement("h3");
     name.className = "menu__item-name";
     name.textContent = item.name;
-    menuItem.append(name);
+    menuInformation.append(name);
 
     let price = document.createElement("p");
     price.className = "menu__item-price";
     price.textContent = item.price;
-    menuItem.append(price);
+    menuInformation.append(price);
 
     let ingredients = document.createElement("p");
     ingredients.className = "menu__item-ingredients";
     ingredients.textContent = item.ingredients;
-    menuItem.append(ingredients);
+    menuInformation.append(ingredients);
 
-    menu.append(menuItem);
+    menuItem.append(menuInformation);
+
+    container.append(menuItem);
   });
-
-  container.append(menu);
 }

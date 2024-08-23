@@ -1,8 +1,10 @@
 //import "./index.css";
 
 export default function about() {
+  let wrapper = document.querySelector("#content-wrapper");
+  wrapper.className = "about";
+
   let container = document.querySelector("#content");
-  container.className = "about";
   container.textContent = "";
 
   let headings = document.createElement("div");

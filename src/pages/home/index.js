@@ -1,8 +1,10 @@
 import "./index.css";
 
 export default function home() {
+  let wrapper = document.querySelector("#content-wrapper");
+  wrapper.className = "home";
+
   const container = document.querySelector("#content");
-  container.className = "home";
   container.textContent = "";
 
   const headings = document.createElement("div");
