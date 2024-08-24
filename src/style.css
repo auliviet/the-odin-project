@@ -96,20 +96,20 @@ nav {
   flex: 1;
   display: flex;
   flex-flow: column;
+}
 
-  & #content {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 2rem;
-    padding: 4rem;
-  
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(4, 1fr);
-      width: 80%;
-      margin: auto;
-      padding: 4rem 0;
-    }
+#content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  padding: 4rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+    width: 80%;
+    margin: auto;
+    padding: 4rem 0;
   }
 }
 
