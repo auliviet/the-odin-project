@@ -82,6 +82,11 @@ body {
 }
 
 /*  || UTILITIES */
+body {
+  display: flex;
+  flex-flow: column;
+}
+
 .large {
   width: clamp(304px, 80%, 800px);
   margin: auto;
