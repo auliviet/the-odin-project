@@ -4,21 +4,29 @@ import WeatherToday from "./weatherToday";
 import WeatherForecast from "./weatherForecast";
 
 export default class Display {
-  static refresh(data) {
-    const main = document.querySelector("main");
-    main.innerHTML = `
-      ${new WeatherToday(data).render()}
-      ${new WeatherForecast(data).render()}
-    `;
-  }
-  static render(data) {
-    return `
+  refresh(data) {
+    const body = document.querySelector("body");
+    body.innerHTML = `
       ${new Navigation(data).render()}
       ${new Search(data).render()}
       <main>
         ${new WeatherToday(data).render()}
         ${new WeatherForecast(data).render()}
       </main>
+    `;
+  }
+
+  loading() {
+    const main = document.querySelector("main");
+    main.innerHTML = `
+      Loading
+    `;
+  }
+  render() {
+    return `
+      ${new Navigation().render()}
+      ${new Search().render()}
+      <main></main>
     `;
   }
 }
