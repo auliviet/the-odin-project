@@ -1,4 +1,4 @@
-import { getWeather } from "../_services/async";
+import "./search.css";
 
 export default class Search {
   constructor({ location = null } = {}) {
@@ -18,13 +18,13 @@ export default class Search {
 
   #submit() {
     return `
-      <button type="submit" class="form__submit">Submit</button>
+      <button type="submit" class="form__submit"></button>
     `;
   }
 
   render() {
     return `
-      <form class="search" id="search">
+      <form class="search large" id="search">
         ${this.#input()}
         ${this.#submit()}
       </form>
