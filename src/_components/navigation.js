@@ -1,12 +1,15 @@
 export default class Navigation {
-  constructor({ currentConditions: { precip } }) {
-    this.precip = precip;
+  constructor({ currentConditions } = {}) {
+    this.precipprob =
+      currentConditions == null ? null : currentConditions.precipprob;
   }
 
   #isUmbrellaNeeded() {
-    if (this.precip === 0) {
+    if (this.precipprob == null) {
+      return "";
+    } else if (this.precipprob === 0) {
       return "No";
-    } else if (this.precip > 0 && this.precip < 5) {
+    } else if (this.precipprob > 0 && this.precipprob < 30) {
       return "Probably";
     } else {
       return "Yes";

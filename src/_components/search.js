@@ -1,13 +1,17 @@
 import { getWeather } from "../_services/async";
 
 export default class Search {
-  constructor({ location }) {
+  constructor({ location = null } = {}) {
     this.location = location;
   }
 
   #input() {
     return `
-      <input type="text" id="location" name="location" value="${this.location}">
+      <input 
+        type="text" 
+        id="location" 
+        name="location" 
+        value="${this.location != null ? this.location : ""}">
       </input>
     `;
   }
