@@ -1,3 +1,5 @@
+import "./navigation.css";
+
 export default class Navigation {
   constructor({ currentConditions } = {}) {
     this.precipprob =
@@ -27,30 +29,34 @@ export default class Navigation {
 
   #units() {
     return `
-      <input 
-        form="search"
-        type="radio" 
-        id="celsius" 
-        name="units" 
-        value="celsius" 
-        class="nav__units selected"
-      />
-      <label for="celsius">ºC</label>
+      <div class="nav__units">
+        <input 
+          form="search"
+          type="radio" 
+          id="celsius" 
+          name="units" 
+          value="celsius" 
+          class="nav__unit"
+          checked
+        />
+        <label for="celsius">ºC</label>
 
-      <input 
-        type="radio" 
-        id="fahrenheit" 
-        name="units" 
-        value="fahrenheit" 
-        class="nav__units" 
-      />
-      <label for="fahrenheit">ºF</label>
+        <input
+          form="search" 
+          type="radio" 
+          id="fahrenheit" 
+          name="units" 
+          value="fahrenheit" 
+          class="nav__unit" 
+        />
+        <label for="fahrenheit">ºF</label>
+      <div>
     `;
   }
 
   render() {
     return `
-      <nav>
+      <nav class="nav">
         ${this.#title()}
         ${this.#units()}
       </nav>
