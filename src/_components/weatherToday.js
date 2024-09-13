@@ -1,3 +1,5 @@
+import "./weatherToday.css";
+
 export default class WeatherToday {
   constructor({ currentConditions, forecast }) {
     this.currentConditions = currentConditions;
@@ -30,7 +32,7 @@ export default class WeatherToday {
     ];
 
     return `
-      <h2 class="weather-today__title">
+      <h2 class="weather-today__title large">
         ${days[this.currentDate.getDay()]}, 
         ${this.currentDate.getDate()} 
         ${months[this.currentDate.getMonth()]} 
@@ -41,8 +43,8 @@ export default class WeatherToday {
   #heroInfos() {
     return `
       <div class="weather-today__hero">
-        <img src="_assets/icons/${this.currentConditions.icon}.svg">
         <div class="weather-today__hero-icon">
+          <span class=${this.currentConditions.icon}></span>
         </div>
         <div class="weather-today__hero-infos">
           <h3 class="weather-today__hero-temp">
@@ -59,51 +61,49 @@ export default class WeatherToday {
   #keyStats() {
     return `
       <div class="weather-today__key-stats">
-        <div class="weather-today__stats-row">
-          <div class="weather-today__stat">
-            <h4>
-              Chance of rain
-            </h4>
-            <p>
-              ${Math.round(this.currentConditions.precipprob)}%
-            </p>
-          </div>
-          <div class="weather-today__stat">
-            <h4>
-              Humidity
-            </h4>
-            <p>
-              ${Math.round(this.currentConditions.humidity)}%
-            </p>
-          </div>
+        <div class="weather-today__stat">
+          <h4>
+            Chance of rain
+          </h4>
+          <p>
+            ${Math.round(this.currentConditions.precipprob)}%
+          </p>
         </div>
-        <div class="weather-today__stats-row">
-          <div class="weather-today__stat">
-            <h4>
-              Sunrise
-            </h4>
-            <p>
-              ${this.currentConditions.sunrise.slice(0, 5)}
-            </p>
-          </div>
-          <div class="weather-today__stat">
-            <h4>
-              Sunset
-            </h4>
-            <p>
-              ${this.currentConditions.sunset.slice(0, 5)}
-            </p>
-          </div>
+        <div class="weather-today__stat">
+          <h4>
+            Humidity
+          </h4>
+          <p>
+            ${Math.round(this.currentConditions.humidity)}%
+          </p>
+        </div>
+        <div class="weather-today__stat">
+          <h4>
+            Sunrise
+          </h4>
+          <p>
+            ${this.currentConditions.sunrise.slice(0, 5)}
+          </p>
+        </div>
+        <div class="weather-today__stat">
+          <h4>
+            Sunset
+          </h4>
+          <p>
+            ${this.currentConditions.sunset.slice(0, 5)}
+          </p>
         </div>
       </div>
     `;
   }
   render() {
     return `
-      ${this.#title()}
       <div class="weather-today">
-        ${this.#heroInfos()}
-        ${this.#keyStats()}
+        ${this.#title()}
+        <div class="weather-today__container">
+          ${this.#heroInfos()}
+          ${this.#keyStats()}
+        </div>
       </div>
     `;
   }
