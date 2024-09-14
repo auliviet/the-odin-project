@@ -46,6 +46,7 @@ module.exports = {
   },
   output: {
     filename: "bundle.js",
+    assetModuleFilename: "[file]",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
