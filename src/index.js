@@ -14,13 +14,12 @@ const body = document.querySelector("body");
 body.innerHTML = display.render();
 addEvents();
 
-async function Weather(location) {
+async function Weather(location, units) {
   display.loading();
   try {
-    const weather = await getWeather(location);
-    display.refresh(weather);
+    const weather = await getWeather(location, units);
+    display.refresh(weather, units);
     addEvents();
-    console.log(weather);
   } catch (error) {
     console.error(error);
   }
@@ -29,10 +28,18 @@ async function Weather(location) {
 // Events
 function addEvents() {
   let button = document.querySelector("button");
-  let input = document.querySelector("#location");
-  button.addEventListener("click", (event) => {
-    event.preventDefault();
-    console.log(input.value);
-    Weather(input.value);
+  let location = document.querySelector("#location");
+  let units = document.querySelectorAll("input[name='units']");
+
+  button.addEventListener("click", search);
+
+  units.forEach((unit) => {
+    unit.addEventListener("click", search);
   });
+
+  function search(event) {
+    let unit = document.querySelector("input[name='units']:checked");
+    event.preventDefault();
+    Weather(location.value, unit.value);
+  }
 }
