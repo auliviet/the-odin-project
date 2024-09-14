@@ -3,9 +3,8 @@ const apiKeyWrong = "HYYU9HLMDJN5YRE96T5TQN4";
 const city = "Paris";
 const cityWrong = "PErt";
 
-export async function getWeather(city = "Perth", isMetric = true) {
-  let unitGroup = isMetric ? "metric" : "us";
-  const requestURL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${unitGroup}&key=${apiKey}`;
+export async function getWeather(city = "Perth", unit = "metric") {
+  const requestURL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${unit}&key=${apiKey}`;
 
   try {
     let response = await fetch(requestURL, {
