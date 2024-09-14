@@ -1,7 +1,4 @@
 const apiKey = "HYYU9HLMDJNS65YRE96T5TQN4";
-const apiKeyWrong = "HYYU9HLMDJN5YRE96T5TQN4";
-const city = "Paris";
-const cityWrong = "PErt";
 
 export function getWeather(city = "Perth", isMetric = true) {
   let unitGroup = isMetric ? "metric" : "us";

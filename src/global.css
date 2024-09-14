@@ -10,7 +10,9 @@
 /*  || RESET  */
 /* Credit Josh Comeau: https://www.joshwcomeau.com/css/custom-css-reset/ */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -23,20 +25,34 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
@@ -60,13 +76,13 @@ html {
   --neutral-900: #171717;
   --primary: var(--neutral-700);
   --secondary: var(--neutral-500);
-  --primary-yellow: linear-gradient(45deg, #B45309, #CA8A04);
-  --secondary-yellow: linear-gradient(45deg, #FDE68A, #FEF9C3);
-  --primary-blue: linear-gradient(45deg, #0369A1, #2563EB);
-  --secondary-blue: linear-gradient(45deg, #BAE6FD, #DBEAFE);
-  --primary-grey: linear-gradient(45deg, #404040, #57534E);
-  --secondary-grey: linear-gradient(45deg, #E5E5E5, #F5F5F4);
-  --primary-black: linear-gradient(45deg, #E2E8F0, #F3F4F6);
+  --primary-yellow: linear-gradient(45deg, #b45309, #ca8a04);
+  --secondary-yellow: linear-gradient(45deg, #fde68a, #fef9c3);
+  --primary-blue: linear-gradient(45deg, #0369a1, #2563eb);
+  --secondary-blue: linear-gradient(45deg, #bae6fd, #dbeafe);
+  --primary-grey: linear-gradient(45deg, #404040, #57534e);
+  --secondary-grey: linear-gradient(45deg, #e5e5e5, #f5f5f4);
+  --primary-black: linear-gradient(45deg, #e2e8f0, #f3f4f6);
   --secondary-black: linear-gradient(45deg, #020617, #111827);
 }
 
@@ -89,7 +105,6 @@ body {
     --secondary: var(--neutral-300);
   }
 }
-
 
 /*  || TYPOGRAPHY */
 @font-face {
