@@ -5,7 +5,7 @@ import WeatherForecast from "./weatherForecast";
 import Loading from "./loading";
 
 export default class Display {
-  refresh(data) {
+  refresh(data, units) {
     const body = document.querySelector("body");
     switch (data.currentConditions.icon) {
       case "clear-day":
@@ -29,7 +29,7 @@ export default class Display {
     }
 
     body.innerHTML = `
-      ${new Navigation(data).render()}
+      ${new Navigation(data, units).render()}
       ${new Search(data).render()}
       <main>
         ${new WeatherToday(data).render()}

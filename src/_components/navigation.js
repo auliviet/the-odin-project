@@ -1,9 +1,10 @@
 import "./navigation.css";
 
 export default class Navigation {
-  constructor({ currentConditions } = {}) {
+  constructor({ currentConditions } = {}, units = "metric") {
     this.precipprob =
       currentConditions == null ? null : currentConditions.precipprob;
+    this.units = units;
   }
 
   #isUmbrellaNeeded() {
@@ -35,9 +36,9 @@ export default class Navigation {
           type="radio" 
           id="celsius" 
           name="units" 
-          value="celsius" 
+          value="metric" 
           class="nav__unit"
-          checked
+          ${this.units == "metric" ? "checked" : ""}
         />
         <label for="celsius">ºC</label>
 
@@ -46,8 +47,9 @@ export default class Navigation {
           type="radio" 
           id="fahrenheit" 
           name="units" 
-          value="fahrenheit" 
+          value="us" 
           class="nav__unit" 
+          ${this.units == "us" ? "checked" : ""}
         />
         <label for="fahrenheit">ºF</label>
       <div>
