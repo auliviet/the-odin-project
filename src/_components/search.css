@@ -1,6 +1,7 @@
 .search {
   flex: 0;
   position: relative;
+  margin-top: 0;
   margin-bottom: 2rem;
 
   & input {
