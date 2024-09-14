@@ -47,10 +47,10 @@
         text-align: center;
       }
 
-      &[value="celsius"]:before {
+      &[value="metric"]:before {
         content: "ºC";
       }
-      &[value="fahrenheit"]:before {
+      &[value="us"]:before {
         content: "ºF";
       }
 
