@@ -52,7 +52,7 @@
         }
 
         &.clear-night {
-          mask-image: url(../_assets/icons/clear-night.svg); 
+          mask-image: url(../_assets/icons/clear-night.svg);
         }
 
         &.cloudy {
@@ -96,7 +96,7 @@
         font-size: 2rem;
         line-height: 2rem;
         color: var(--primary);
-        
+
         @media (min-width: 1024px) {
           font-size: 1rem;
           line-height: 1rem;

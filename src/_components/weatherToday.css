@@ -9,7 +9,7 @@
   & .weather-today__container {
     display: flex;
     flex-flow: column;
-    gap: 1rem;  
+    gap: 1rem;
     width: fit-content;
     margin: auto;
     text-align: center;
@@ -46,47 +46,47 @@
             width: 9rem;
             mask-size: cover;
           }
-          
+
           &.clear-day {
             mask-image: url(../_assets/icons/clear-day.svg);
             background: var(--primary-yellow);
           }
-  
+
           &.clear-night {
-            mask-image: url(../_assets/icons/clear-night.svg); 
+            mask-image: url(../_assets/icons/clear-night.svg);
             background: var(--primary-black);
           }
-  
+
           &.cloudy {
             mask-image: url(../_assets/icons/cloudy.svg);
             background: var(--primary-grey);
           }
-  
+
           &.fog {
             mask-image: url(../_assets/icons/fog.svg);
             background: var(--primary-grey);
           }
-  
+
           &.partly-cloudy-day {
             mask-image: url(../_assets/icons/partly-cloudy-day.svg);
             background: var(--primary-yellow);
           }
-  
+
           &.partly-cloudy-night {
             mask-image: url(../_assets/icons/partly-cloudy-night.svg);
             background: var(--primary-black);
           }
-  
+
           &.rain {
             mask-image: url(../_assets/icons/rain.svg);
             background: var(--primary-blue);
           }
-  
+
           &.snow {
             mask-image: url(../_assets/icons/snow.svg);
             background: var(--primary-grey);
           }
-  
+
           &.wind {
             mask-image: url(../_assets/icons/wind.svg);
             background: var(--primary-blue);
