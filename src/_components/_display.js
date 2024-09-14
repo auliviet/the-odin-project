@@ -2,6 +2,7 @@ import Navigation from "./navigation";
 import Search from "./search";
 import WeatherToday from "./weatherToday";
 import WeatherForecast from "./weatherForecast";
+import Loading from "./loading";
 
 export default class Display {
   refresh(data) {
@@ -40,7 +41,7 @@ export default class Display {
   loading() {
     const main = document.querySelector("main");
     main.innerHTML = `
-      Loading
+      ${new Loading().render()}
     `;
   }
   render() {
