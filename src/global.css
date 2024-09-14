@@ -70,6 +70,23 @@ html {
   --secondary-black: linear-gradient(45deg, #020617, #111827);
 }
 
+body {
+  &.yellow {
+    background: var(--secondary-yellow);
+  }
+
+  &.blue {
+    background: var(--secondary-blue);
+  }
+
+  &.grey {
+    background: var(--secondary-grey);
+  }
+
+  &.black {
+    background: var(--secondary-black);
+  }
+}
 
 
 /*  || TYPOGRAPHY */
@@ -95,6 +112,8 @@ body {
 body {
   display: flex;
   flex-flow: column;
+  min-height: 100vh;
+  padding: 1rem 0;
 }
 
 .large {
