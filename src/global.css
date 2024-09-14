@@ -116,6 +116,12 @@ body {
   padding: 1rem 0;
 }
 
+main {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+}
+
 .large {
   width: clamp(304px, 80%, 800px);
   margin: auto;
