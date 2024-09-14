@@ -55,7 +55,7 @@
       }
 
       &:checked {
-        background-color: var(--primary);
+        background-color: var(--neutral-700);
         color: var(--neutral-200);
       }
 
