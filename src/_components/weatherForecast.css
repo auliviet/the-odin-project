@@ -6,6 +6,7 @@
   & .weather-forecast__title {
     align-self: flex-start;
     margin-bottom: 1rem;
+    color: var(--primary);
   }
 
   & .weather-forecast__container {
@@ -44,7 +45,7 @@
         width: 2rem;
         height: 2rem;
         mask-size: cover;
-        background-color: var(--secondary);
+        background-color: var(--neutral-500);
 
         &.clear-day {
           mask-image: url(../_assets/icons/clear-day.svg);
@@ -82,8 +83,6 @@
           mask-image: url(../_assets/icons/wind.svg);
         }
       }
-
-      
     }
 
     & .weather-forecast__item-info {
@@ -96,6 +95,7 @@
       & .weather-forecast__item-temp {
         font-size: 2rem;
         line-height: 2rem;
+        color: var(--primary);
         
         @media (min-width: 1024px) {
           font-size: 1rem;

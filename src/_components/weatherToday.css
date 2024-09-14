@@ -3,6 +3,7 @@
 
   & .weather-today__title {
     margin-bottom: 1rem;
+    color: var(--primary);
   }
 
   & .weather-today__container {
@@ -96,6 +97,7 @@
       & .weather-today__hero-temp {
         font-size: 6rem;
         line-height: 6rem;
+        color: var(--primary);
 
         @media (min-width: 1024px) {
           font-size: 8rem;
@@ -106,6 +108,7 @@
       & .weather-today__hero-conditions {
         font-size: 1rem;
         line-height: 1rem;
+        color: var(--secondary);
       }
     }
 
@@ -116,6 +119,7 @@
       grid-auto-rows: max-content;
       row-gap: 1rem;
       justify-items: center;
+      color: var(--primary);
 
       & h4 {
         color: var(--secondary);

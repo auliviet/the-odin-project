@@ -13,7 +13,7 @@
     background-color: var(--neutral-50);
     border: solid 4px var(--neutral-200);
     border-radius: 2rem;
-    color: var(--primary);
+    color: var(--neutral-700);
 
     &:focus {
       outline: none;

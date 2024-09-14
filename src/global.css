@@ -85,6 +85,8 @@ body {
 
   &.black {
     background: var(--secondary-black);
+    --primary: var(--neutral-100);
+    --secondary: var(--neutral-300);
   }
 }
 
