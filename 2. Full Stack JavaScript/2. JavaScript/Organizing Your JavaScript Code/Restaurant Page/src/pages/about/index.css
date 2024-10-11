@@ -1,0 +1,24 @@
+.about {
+  flex-flow: row;
+  gap: 72px;
+  align-items: center;
+
+  & img {
+    flex-grow: 1;
+  }
+
+  & .about__headings {
+    text-align: center;
+    flex-grow: 2;
+  
+    & h2 {
+      line-height: 36px;
+      margin-bottom: 72px;
+    }
+  
+    & p {
+      text-align: left;
+    }
+  }
+}
+
