@@ -1,0 +1,88 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  height: 100vh;
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  justify-content: space-evenly;
+}
+
+#player,
+#computer,
+#results,
+#endgame {
+  padding: 32px 16px;
+  background-color: #dadada;
+  border-radius: 32px;
+}
+
+#player,
+#computer {
+  flex: 1;
+}
+
+h2,
+h3 {
+  text-align: center;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+.choice {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button {
+  width: 112px;
+  height: 112px;
+  border: 5px solid #fff;
+  border-radius: 56px;
+  font-size: 64px;
+  cursor: pointer;
+}
+
+#results,
+#endgame {
+  flex-shrink: 0;
+  height: 240px;
+}
+
+#results h3 {
+  height: 32px;
+}
+
+#endgame {
+  display: none;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#endgame h2 {
+  font-size: 64px;
+}
+
+#endgame button {
+  width: auto;
+  height: auto;
+  padding: 16px 32px;
+  font-size: 32px;
+  background-color: #222;
+  color: white;
+}
