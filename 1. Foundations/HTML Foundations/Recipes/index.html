@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Camping Recipes</title>
+
+    <!-- Matomo -->
+    <script>
+     var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['setDocumentTitle', document.domain + "/" + document.title]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//analytics.auliviet.com/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+
+        // Share the tracking cookie across subdomains
+        _paq.push(['setCookieDomain', '*.auliviet.com']);
+
+        // Tell Matomo the website domain so that clicks on these domains are not tracked as 'Outlinks'
+        _paq.push(['setDomains', '*.auliviet.com']);
+
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+  </head>
+
+  <body>
+    <h1>Camping recipes</h1>
+    
+    <ul>
+      <li><a href="recipes/option1.html">Camping recipes for 3 days - Option 1</a></li> 
+      <li><a href="recipes/option2.html">Camping recipes for 3 days - Option 2</a></li> 
+      <li><a href="recipes/option3.html">Camping recipes for 3 days - Option 3</a></li> 
+    </ul>
+  </body>
+</html>
