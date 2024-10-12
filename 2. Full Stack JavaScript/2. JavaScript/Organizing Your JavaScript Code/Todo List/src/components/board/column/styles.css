@@ -1,0 +1,17 @@
+.column {
+  padding: 2rem 1rem;
+  background-color: var(--light-grey);
+  border-radius: 1rem;
+
+  @media (min-width: 1024px) {
+    flex: 1 0 260px;
+  }
+
+  & .column__title {
+    margin-bottom: 2rem;
+  }
+
+  &.overdue {
+    background-color: var(--grey);
+  }
+}
