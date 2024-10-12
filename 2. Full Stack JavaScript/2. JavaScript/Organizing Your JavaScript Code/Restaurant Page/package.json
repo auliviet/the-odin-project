@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Exercise for the Odin Project - Full-stack JavaScript on ES6 Modules and Webpack",
   "private": "true",
-  "type": "module",
   "scripts": {
     "dev": "webpack serve --open-app-name 'Firefox Developer Edition' --config webpack.dev.js",
     "lint": "eslint src/ && prettier --check src/",
