@@ -1,0 +1,16 @@
+.about {
+  & .about__content {
+    grid-column: span 2;
+
+    & .about__title {
+      text-align: center;
+    }
+  }
+
+  & .about__image-wrapper {
+    grid-column: span 2;
+    background-image: url("../../assets/img/about.jpg");
+    background-size: cover;
+    background-position: right;
+  }
+}
