@@ -10,7 +10,7 @@ export default function menu() {
   let menuList = [
     {
       name: "Pepperoni",
-      image: "/assets/img/pepperoni.png",
+      image: "assets/img/pepperoni.png",
       price: "$15",
       ingredients: "tomato base, mozarella, mild pepperoni, oregano",
     },
