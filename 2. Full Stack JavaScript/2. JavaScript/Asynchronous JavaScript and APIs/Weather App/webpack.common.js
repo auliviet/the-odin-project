@@ -13,26 +13,34 @@ module.exports = {
       filename: "styles.css",
     }),
     new CopyPlugin({
-      patterns: [{ from: "src/_assets", to: "_assets" }],
+      patterns: [{ from: "src/assets", to: "assets" }],
     }),
   ],
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              url: false,
+            },
+          },
+        ],
       },
       {
         test: /\.html$/i,
         loader: "html-loader",
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /assets\/.*$/i,
         type: "asset/resource",
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: "asset/resource",
+        /* do not emit copies of files */
+        generator: {
+          emit: false,
+        },
       },
     ],
   },

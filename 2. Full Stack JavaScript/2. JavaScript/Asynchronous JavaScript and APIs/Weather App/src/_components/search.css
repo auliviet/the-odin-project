@@ -30,7 +30,7 @@
     background-color: var(--neutral-50);
 
     &:before {
-      content: url("../_assets/icons/search.svg") / "Search icon";
+      content: url("assets/icons/search.svg") / "Search icon";
       font-size: 2rem;
     }
   }
