@@ -1,0 +1,110 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-weight: lighter;
+  background-color: #000;
+}
+
+#calculator {
+  display: flex;
+  flex-direction: column;
+}
+
+#display {
+  height: 96px;
+  font-size: 32px;
+  line-height: 48px;
+  text-align: right;
+  color: #fff;
+}
+
+#top-row {
+  height: 48px;
+  color: #a6a6a6;
+}
+
+#bottom-row {
+  display: flex;
+}
+
+#current-number,
+#operator {
+  height: 48px;
+}
+
+#operator {
+  width: 40px;
+  text-align: center;
+  color: #a6a6a6;
+}
+
+#current-number {
+  flex: 1;
+}
+
+#keyboard {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+}
+
+#controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+#operands {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#numbers button {
+  background-color: #3b3b3b;
+  color: #fff;
+}
+
+#operands button {
+  background-color: #ee9843;
+  color: #fff;
+}
+
+#clear {
+  width: 100%;
+  background-color: #a6a6a6;
+  color: #222;
+}
+
+#zero {
+  flex: 2;
+}
