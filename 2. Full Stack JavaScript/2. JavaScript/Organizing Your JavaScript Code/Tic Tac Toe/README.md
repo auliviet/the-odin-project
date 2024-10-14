@@ -1,15 +1,27 @@
-# odin-tic_tac_toe
-Exercise for the Odin Project - Full-stack JavaScript on Factory Functions and the Module Pattern
+# Tic Tac Toe
+
+[The Oding Project](https://www.theodinproject.com): Tic Tac Toe.
+Exercise as part of the Full-stack JavaScript curriculum on Factory Functions.
 
 ## Preview link
-https://auliviet.github.io/odin-tic_tac_toe/
+
+[Github Pages](https://auliviet.github.io/the-odin-project/tic-tac-toe/)
+
+## Project Overview
+
+Tic Tac Toe is a simple game created by using Factory Functions to manage the game loop, keep track of scores and render the content on the page.
+
+This project offers the below functionalities:
+
+- Two players get to chose their name.
+- Each player in turn place their mark on a three by three grid.
+- To win, a player must align (vertically, horizontally or in diagonal)
 
 ## Instructions
+
 - Create a Tic Tac Toe game you can play in your browser.
-- You’re going to store the gameboard as an array inside of a Gameboard object. Your players are also going to be stored in objects, and you’re probably going to want an object to control the flow of the game itself.
--- Your main goal here is to have as little global code as possible. Try tucking as much as you can inside factories.
--- Each little piece of functionality should be able to fit in the game, player or gameboard objects.
-- Focus on getting a working game in the console first. 
-- Once you have a working console game, create an object that will handle the display/DOM logic.
-- Write the functions that allow players to add marks to a specific spot on the board by interacting with the appropriate DOM elements.
-- Clean up the interface to allow players to put in their names, include a button to start/restart the game and add a display element that shows the results upon game end!
+- Store the gameboard as an array inside of a Gameboard object.
+- Players will be stored in an object as well.
+- The main goal here is to have as little global code as possible.
+  -- Try tucking as much as you can inside factories.
+  -- Each little piece of functionality should be able to fit in the game, player or gameboard objects.
