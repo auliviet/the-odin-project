@@ -23,6 +23,25 @@ Toodoo is a simple todo list that organise tasks based on their due date and pri
 
 ## All projects
 
+### Full Stack JavaScript path
+
+Intermediate HTML and CSS
+
+- [Sign-up Form](2.%20Full%20Stack%20JavaScript/1.%20Intermediate%20HTML%20and%20CSS/Forms/Sign-up%20Form)
+- [Admin Dashboard](2.%20Full%20Stack%20JavaScript/1.%20Intermediate%20HTML%20and%20CSS/Grid/Admin%20Dashboard)
+
+JavaScript
+
+- [Library]()
+- [Tic Tac Toe]()
+- [Restaurant Page]()
+- [Todo List](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Organizing%20Your%20JavaScript%20Code/Todo%20List)
+- [Weather App](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Asynchronous%20JavaScript%20and%20APIs/Weather%20App)
+
 ### Foundations path
 
-### Full Stack JavaScript path
+- [Recipes](1.%20Foundations/HTML%20Foundations/Recipes)
+- [Landing page](1.%20Foundations/Flexbox/Landing%20page)
+- [Rock Paper Scissors](1.%20Foundations/JavaScript%20Basics/Rock%20Paper%20Scissors)
+- [Etch-a-Sketch](1.%20Foundations/JavaScript%20Basics/Etch-a-Sketch)
+- [Calculator](1.%20Foundations/JavaScript%20Basics/Calculator)
