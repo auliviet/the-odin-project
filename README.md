@@ -40,8 +40,16 @@ JavaScript
 
 ### Foundations path
 
+HTML Foundations
+
 - [Recipes](1.%20Foundations/HTML%20Foundations/Recipes)
+
+Flexbox
+
 - [Landing page](1.%20Foundations/Flexbox/Landing%20page)
+
+JavaScript Basics
+
 - [Rock Paper Scissors](1.%20Foundations/JavaScript%20Basics/Rock%20Paper%20Scissors)
 - [Etch-a-Sketch](1.%20Foundations/JavaScript%20Basics/Etch-a-Sketch)
 - [Calculator](1.%20Foundations/JavaScript%20Basics/Calculator)
