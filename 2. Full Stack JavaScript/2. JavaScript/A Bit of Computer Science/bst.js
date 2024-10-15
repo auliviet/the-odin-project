@@ -16,16 +16,20 @@ class Tree {
   }
 
   buildTree(array) {
+    // Build a balanced Binary Search Tree
     let midArray = Math.floor(array.length / 2);
     let root = new Node(array[midArray]);
 
     if (midArray > 0) {
+      // Check if the array is not empty before calling the recursive method to avoid having Undefined nodes in the tree
+
       let left = array.slice(0, midArray);
       root.left = left.length > 0 ? this.buildTree(left) : null;
 
       let right = array.slice(midArray + 1);
       root.right = right.length > 0 ? this.buildTree(right) : null;
     }
+
     return root;
   }
 }
@@ -55,7 +59,7 @@ console.log("Mid array = ", midArray);
 console.log("Left = ", left);
 console.log("Right = ", right); */
 
-let arr = [13, 2, 33, 3, 33];
+let arr = [13, 2, 33, 3, 33, 22, 12, 41, 8];
 
 let tree = new Tree(arr);
 prettyPrint(tree.root);
