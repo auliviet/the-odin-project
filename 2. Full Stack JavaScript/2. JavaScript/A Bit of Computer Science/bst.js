@@ -33,29 +33,25 @@ class Tree {
     return root;
   }
 
-  insert(value) {
-    // Insert the given value in the tree.
+  insert(value, currentNode = this.root) {
+    // Insert the value as a leaf node by recursively finding the appropriate position.
 
-    let currentNode = this.root;
-
-    while (true) {
-      if (value < currentNode.data) {
-        if (currentNode.left == null) {
-          currentNode.left = new Node(value);
-          return;
-        } else {
-          currentNode = currentNode.left;
-        }
-      }
-      if (value > currentNode.data) {
-        if (currentNode.right == null) {
-          currentNode.right = new Node(value);
-          return;
-        } else {
-          currentNode = currentNode.right;
-        }
+    if (value < currentNode.data) {
+      if (currentNode.left == null) {
+        currentNode.left = new Node(value);
+      } else {
+        this.insert(value, currentNode.left);
       }
     }
+    if (value > currentNode.data) {
+      if (currentNode.right == null) {
+        currentNode.right = new Node(value);
+      } else {
+        this.insert(value, currentNode.right);
+      }
+    }
+
+    return;
   }
 
   deleteItem(value) {
