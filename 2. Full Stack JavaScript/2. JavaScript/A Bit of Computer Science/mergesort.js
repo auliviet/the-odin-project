@@ -1,12 +1,12 @@
 function mergesort(array) {
   if (array.length > 1) {
-    // Sort left half of the array
+    // Sort left half of the array.
     const left = mergesort(array.slice(0, Math.round(array.length / 2)));
 
-    // Sort right half of the array
+    // Sort right half of the array.
     const right = mergesort(array.slice(Math.round(array.length / 2)));
 
-    // Merge the two halves together
+    // Merge the two halves together.
     const merged = merge(left, right);
 
     return merged;
@@ -16,6 +16,8 @@ function mergesort(array) {
 }
 
 function merge(a, b) {
+  // Merge two sorted arrays in a single sorted array.
+
   const merged = [];
 
   let i = 0;
