@@ -32,3 +32,8 @@ The full set of instructions can be found at [The Odin Project ](https://www.the
 - Add any styling you like!
 - Optional:
   -- add a ‘loading’ component that displays from the time the form is submitted until the information comes back from the API. Use DevTools to test for low-end devices.
+
+## Future enhancements
+
+- Add animations:
+  -- Fade out when the background colour changes

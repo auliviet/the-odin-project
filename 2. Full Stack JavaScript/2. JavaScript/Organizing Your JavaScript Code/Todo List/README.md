@@ -49,3 +49,6 @@ The full set of instructions can be found at [The Odin Project ](https://www.the
 
 - Resolve accessibility issues on Safari (forms drop down).
 - Let user create projects and assign projects to tasks.
+- Add animations:
+  -- Fade out when a task is completed
+  -- Slide on the toggle button

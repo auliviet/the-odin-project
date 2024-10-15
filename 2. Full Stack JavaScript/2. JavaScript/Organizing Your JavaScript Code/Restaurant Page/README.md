@@ -30,3 +30,7 @@ The full set of instructions can be found at [The Odin Project ](https://www.the
 - Set up an HTML skeleton inside of src/index.html. Inside the body, add a <header> element that contains a <nav> with buttons (not links!) for different “tabs” (for example buttons for “Home”, “Menu” or “About” etc). Below the <header>, add a single <div id="content">.
 - Create the different pages by using JavaScript to update the content of the #content div.
 - Add JavaScript functions for the tabbed navigation.
+
+## Future enhancements
+
+- Add page title
