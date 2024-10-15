@@ -32,6 +32,35 @@ class Tree {
 
     return root;
   }
+
+  insert(value) {
+    // Insert the given value in the tree.
+
+    let currentNode = this.root;
+
+    while (true) {
+      if (value < currentNode.data) {
+        if (currentNode.left == null) {
+          currentNode.left = new Node(value);
+          return;
+        } else {
+          currentNode = currentNode.left;
+        }
+      }
+      if (value > currentNode.data) {
+        if (currentNode.right == null) {
+          currentNode.right = new Node(value);
+          return;
+        } else {
+          currentNode = currentNode.right;
+        }
+      }
+    }
+  }
+
+  deleteItem(value) {
+    // Delete the given value from the tree.
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -49,18 +78,11 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 
 // Test values
 
-/* let array = [1, 2, 3];
-
-let midArray = Math.floor(array.length / 2);
-let left = array.slice(0, midArray);
-let right = array.slice(midArray + 1);
-
-console.log("Mid array = ", midArray);
-console.log("Left = ", left);
-console.log("Right = ", right); */
-
 let arr = [13, 2, 33, 3, 33, 22, 12, 41, 8];
 
 let tree = new Tree(arr);
 prettyPrint(tree.root);
-console.log(tree.buildTree([]));
+
+tree.insert(21);
+tree.insert(23);
+prettyPrint(tree.root);
