@@ -7,6 +7,8 @@ export default class HashMap {
   }
 
   hash(key) {
+    // Return a hash code based on an input key.
+
     let hashCode = 0;
 
     const primeNumber = 31;
@@ -19,6 +21,8 @@ export default class HashMap {
   }
 
   bucket(key) {
+    // Return the bucket to store the key and value pair based on the hash code.
+
     let index = this.hash(key);
 
     if (index < 0 || index >= this.buckets.length) {
@@ -29,6 +33,8 @@ export default class HashMap {
   }
 
   entry(key, bucket) {
+    // Return the key value pair associated with a key.
+
     for (let entry of bucket) {
       if (key === entry.key) {
         return entry;
@@ -39,6 +45,8 @@ export default class HashMap {
   }
 
   set(key, value) {
+    // Add a new key value pair to the HashMap.
+
     let bucket = this.bucket(key);
     let entry = this.entry(key, bucket);
 
@@ -53,6 +61,8 @@ export default class HashMap {
   }
 
   get(key) {
+    // Return the value associated with a key.
+
     let bucket = this.bucket(key);
     let entry = this.entry(key, bucket);
 
@@ -64,6 +74,8 @@ export default class HashMap {
   }
 
   has(key) {
+    // Check if a key is present in the HashMap.
+
     let bucket = this.bucket(key);
     let entry = this.entry(key, bucket);
 
@@ -75,6 +87,8 @@ export default class HashMap {
   }
 
   remove(key) {
+    // Remove a key value pair from the HashMap.
+
     let bucket = this.bucket(key);
     let entry = this.entry(key, bucket);
 
@@ -89,15 +103,20 @@ export default class HashMap {
   }
 
   length() {
+    // Return the number of entries in the HashMap.
     return this.length;
   }
 
   clear() {
+    // Remove all key value pairs from the HashMap but conserves its size.
+
     this.length = 0;
     this.buckets = new Array(this.size).fill(null).map(() => new Array());
   }
 
   keys() {
+    // Return the list of keys present in the HashMap.
+
     let keys = [];
 
     for (let bucket of this.buckets) {
@@ -112,6 +131,8 @@ export default class HashMap {
   }
 
   values() {
+    // Return the list of values present in the HashMap.
+
     let values = [];
 
     for (let bucket of this.buckets) {
@@ -126,6 +147,8 @@ export default class HashMap {
   }
 
   entries() {
+    // Return the list of key value pairs present in the HashMap.
+
     let entries = [];
     let keys = this.keys();
     let values = this.values();
@@ -138,6 +161,8 @@ export default class HashMap {
   }
 
   grow() {
+    // Doubles the size of the HashMap when the load factor is reached.
+
     if (this.length / this.size > this.loadfactor) {
       let entries = this.entries();
       this.size *= 2;
