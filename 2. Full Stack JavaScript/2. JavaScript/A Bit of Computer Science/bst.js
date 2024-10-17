@@ -185,9 +185,35 @@ class Tree {
     }
   }
 
-  inOrder(callback) {}
-  preOrder(callback) {}
-  postOrder(callback) {}
+  inOrder(callback) {
+    // Throw an error if no callback is provided
+    if (!callback) {
+      throw new Error("Callback function required as a parameter");
+    }
+  }
+
+  // Traverse the tree in depth-first level order, visiting the root node first, then the left node and then the right, and call the callback on each node as it traverses, passing the whole node as an argument.
+  preOrder(callback, node = this.root) {
+    // Throw an error if no callback is provided
+    if (!callback) {
+      throw new Error("Callback function required as a parameter");
+    }
+
+    // Base case for the recursive function
+    if (node === null) {
+      return;
+    }
+
+    console.log(node.data);
+    this.preOrder(callback, node.left);
+    this.preOrder(callback, node.right);
+  }
+  postOrder(callback) {
+    // Throw an error if no callback is provided
+    if (!callback) {
+      throw new Error("Callback function required as a parameter");
+    }
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -209,4 +235,4 @@ let arr = [13, 2, 33, 3, 33, 22, 12, 41, 8];
 let tree = new Tree(arr);
 
 prettyPrint(tree.root);
-tree.levelOrder();
+tree.preOrder(console.log);
