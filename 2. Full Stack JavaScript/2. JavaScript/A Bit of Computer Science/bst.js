@@ -62,19 +62,36 @@ class Tree {
     }
   }
 
-  deleteItem(value, currentNode = this.root) {
-    // Delete the given value from the tree.
-
+  // Delete the given value from the tree.
+  deleteItem(value) {
+    // Find the node to delete and its parent node.
     let nodeToDelete = this.find(value);
 
+    // Stop the function is the node to delete is not in the tree.
     if (!nodeToDelete) {
-      // Stop the function is the node to delete is not in the tree.
       return null;
     }
 
-    // If value has no child node, remove it from its parent.
-    // If value has one child node, replace the node with its child.
-    // If value has two child nodes, find the next biggest value in the sub-tree and replace the node to delete with this node.
+    // If node to delete has no child node, remove it from its parent.
+    // If node to delete has one child node, replace the node with its child.
+    if (!nodeToDelete.left) {
+      return this.shiftNodes(nodeToDelete, nodeToDelete.right);
+    } else if (!nodeToDelete.right) {
+      this.shiftNodes(nodeToDelete, nodeToDelete.left);
+    }
+
+    // If node to delete has two children nodes, find the next biggest node in the right sub-tree and replace the node to delete with this node.
+    else {
+      let successor = this.findSuccessor(nodeToDelete.right);
+
+      if (nodeToDelete.right !== successor) {
+        this.shiftNodes(successor, successor.right);
+        successor.right = nodeToDelete.right;
+      }
+
+      this.shiftNodes(nodeToDelete, successor);
+      successor.left = nodeToDelete.left;
+    }
   }
 
   // Find a node with a given value in the tree.
@@ -96,6 +113,53 @@ class Tree {
     // Return null if no node was found.
     return null;
   }
+
+  // Find the parent of a node with a given value in the tree.
+  findParent(value, currentNode = this.root) {
+    // Return the current node if the value appears in its left or right children.
+    if (
+      (currentNode.left && currentNode.left.data === value) ||
+      (currentNode.right && currentNode.right.data === value)
+    ) {
+      return currentNode;
+    }
+
+    // If the value is less than the current node's value, search the left subtree.
+    if (currentNode.left && value < currentNode.data) {
+      return this.findParent(value, currentNode.left);
+    }
+    // If the value is greater than the current node's value, search the right subtree.
+    if (currentNode.right && value > currentNode.data) {
+      return this.findParent(value, currentNode.right);
+    }
+
+    // Return null if no node was found.
+    return null;
+  }
+
+  // Find the next biggest node in the tree by finding the leftmost leaf node.
+  findSuccessor(node) {
+    if (!node.left) {
+      return node;
+    } else {
+      return this.findSuccessor(node.left);
+    }
+  }
+
+  // Shift nodes in the tree by replacing the nodeToDelete with the nodeToShift.
+  shiftNodes(nodeToDelete, nodeToShift) {
+    let parentNode = this.findParent(nodeToDelete.data);
+
+    if (!parentNode) {
+      return (this.root = nodeToShift);
+    }
+
+    if (parentNode.left === nodeToDelete) {
+      return (parentNode.left = nodeToShift);
+    } else {
+      return (parentNode.right = nodeToShift);
+    }
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -114,13 +178,15 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 // Test values
 
 let arr = [13, 2, 33, 3, 33, 22, 12, 41, 8];
-
 let tree = new Tree(arr);
+tree.insert(43);
+tree.insert(18);
+tree.insert(24);
+
 prettyPrint(tree.root);
 
-tree.insert(24);
-tree.insert(22);
-tree.insert(26);
+tree.deleteItem(43);
 prettyPrint(tree.root);
-console.log(tree.find(22));
-console.log(tree.find(0));
+
+tree.deleteItem(13);
+prettyPrint(tree.root);
