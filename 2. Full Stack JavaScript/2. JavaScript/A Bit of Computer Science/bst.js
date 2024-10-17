@@ -160,6 +160,34 @@ class Tree {
       return (parentNode.right = nodeToShift);
     }
   }
+
+  // Traverse the tree in breadth-first level order and call the callback on each node as it traverses, passing the whole node as an argument.
+  levelOrder(callback) {
+    // Throw an error if no callback is provided
+    if (!callback) {
+      throw new Error("Callback function required as a parameter");
+    }
+
+    let queue = [this.root];
+
+    while (queue.length > 0) {
+      let currentNode = queue.shift();
+
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+
+      callback(currentNode);
+    }
+  }
+
+  inOrder(callback) {}
+  preOrder(callback) {}
+  postOrder(callback) {}
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -179,14 +207,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 
 let arr = [13, 2, 33, 3, 33, 22, 12, 41, 8];
 let tree = new Tree(arr);
-tree.insert(43);
-tree.insert(18);
-tree.insert(24);
 
 prettyPrint(tree.root);
-
-tree.deleteItem(43);
-prettyPrint(tree.root);
-
-tree.deleteItem(13);
-prettyPrint(tree.root);
+tree.levelOrder();
