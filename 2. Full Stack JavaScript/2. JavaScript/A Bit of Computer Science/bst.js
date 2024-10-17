@@ -219,11 +219,21 @@ class Tree {
     this.preOrder(callback, node.right);
   }
 
-  postOrder(callback) {
+  // Traverse the tree in depth-first level order, visiting the left node first, then the right node and then the root, and call the callback on each node as it traverses, passing the whole node as an argument.
+  postOrder(callback, node = this.root) {
     // Throw an error if no callback is provided
     if (!callback) {
       throw new Error("Callback function required as a parameter");
     }
+
+    // Base case for the recursive function
+    if (node === null) {
+      return;
+    }
+
+    this.postOrder(callback, node.left);
+    this.postOrder(callback, node.right);
+    callback(node);
   }
 }
 
@@ -246,4 +256,4 @@ let arr = [13, 2, 33, 3, 33, 22, 12, 41, 8];
 let tree = new Tree(arr);
 
 prettyPrint(tree.root);
-tree.inOrder(console.log);
+tree.postOrder(console.log);
