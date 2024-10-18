@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class Tree {
+export default class Tree {
   constructor(arr) {
     // Build a balanced Binary Search Tree from an array.
 
@@ -310,35 +310,3 @@ class Tree {
     this.root = this.buildTree(nodes);
   }
 }
-
-const prettyPrint = (node, prefix = "", isLeft = true) => {
-  if (node === null) {
-    return;
-  }
-  if (node.right !== null) {
-    prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
-  }
-  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
-  if (node.left !== null) {
-    prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
-  }
-};
-
-// Test values
-
-let arr = [13, 2, 33, 3, 33, 22, 12, 41, 8];
-let tree = new Tree(arr);
-
-prettyPrint(tree.root);
-let node = tree.find(41);
-tree.insert(1);
-tree.insert(42);
-tree.insert(43);
-tree.insert(44);
-
-tree.insert(51);
-prettyPrint(tree.root);
-console.log(tree.isBalanced());
-tree.rebalance();
-prettyPrint(tree.root);
-console.log(tree.isBalanced());
