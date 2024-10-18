@@ -12,6 +12,7 @@ Different exercises to get familiar with Computer Science concepts (ie. recursio
 - Recursions (Fibonacci sequence and Mergesort): [The Odin Project](https://www.theodinproject.com/lessons/javascript-recursion)
 - Linked lists: [The Odin Project](https://www.theodinproject.com/lessons/javascript-linked-lists)
 - HashMap: [The Odin Project](https://www.theodinproject.com/lessons/javascript-hashmap)
+- Binary Search Tree: [The Odin Project](https://www.theodinproject.com/lessons/javascript-binary-search-trees)
 
 ## Future enhancements
 
