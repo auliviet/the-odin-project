@@ -294,6 +294,21 @@ class Tree {
 
     return true;
   }
+
+  // Rebalances an unbalanced tree.
+  rebalance() {
+    // If the tree is already balanced, stops the execution.
+    if (this.isBalanced()) {
+      return;
+    }
+
+    // Create a sorted array from the nodes of the current tree.
+    const nodes = [];
+    this.inOrder((node) => nodes.push(node.data));
+
+    // Re-build a Tree with this array.
+    this.root = this.buildTree(nodes);
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -322,5 +337,8 @@ tree.insert(43);
 tree.insert(44);
 
 tree.insert(51);
+prettyPrint(tree.root);
+console.log(tree.isBalanced());
+tree.rebalance();
 prettyPrint(tree.root);
 console.log(tree.isBalanced());
