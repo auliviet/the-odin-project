@@ -235,6 +235,22 @@ class Tree {
     this.postOrder(callback, node.right);
     callback(node);
   }
+
+  // Returns the given node’s height, the number of edges in the longest path from a given node to a leaf node.
+  height(node = this.root) {
+    // Base case, return when a leave node is found.
+    if (!node.left && !node.right) {
+      return 0;
+    }
+
+    // Compare the height of the left subtree to the right subtree, returns the highest and add 1.
+    else {
+      let left = node.left ? this.height(node.left) : 0;
+      let right = node.right ? this.height(node.right) : 0;
+
+      return left > right ? 1 + left : 1 + right;
+    }
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -256,4 +272,5 @@ let arr = [13, 2, 33, 3, 33, 22, 12, 41, 8];
 let tree = new Tree(arr);
 
 prettyPrint(tree.root);
-tree.postOrder(console.log);
+let node = tree.find(33);
+console.log(tree.height(node));
