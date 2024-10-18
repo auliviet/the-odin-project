@@ -269,16 +269,30 @@ class Tree {
       return 0;
     }
 
-    // Check if the give node is in the left or right subtree. Add 1 for each node in the path between the root and the given node.
+    // Check if the given node is in the left or right subtree. Add 1 for each node in the path between the root and the given node.
     else {
       let left = this.depth(node, currentNode.left);
       let right = this.depth(node, currentNode.right);
 
       let depth = left > right ? left : right;
 
-      // If depth >= 0, the give node has been found.
+      // If depth >= 0, the given node has been found.
       return depth >= 0 ? depth + 1 : -1;
     }
+  }
+
+  // Check if the tree is balanced (the difference between heights of the left subtree and the right subtree of every node is not more than 1).
+  isBalanced(node = this.root) {
+    // Check height of left and right subtrees
+    let leftHeight = node.left ? this.height(node.left) : 0;
+    let rightHeight = node.right ? this.height(node.right) : 0;
+
+    // If height difference > 2, return false.
+    if (leftHeight - rightHeight < -1 || leftHeight - rightHeight > 1) {
+      return false;
+    }
+
+    return true;
   }
 }
 
@@ -302,4 +316,11 @@ let tree = new Tree(arr);
 
 prettyPrint(tree.root);
 let node = tree.find(41);
-console.log(tree.depth(node));
+tree.insert(1);
+tree.insert(42);
+tree.insert(43);
+tree.insert(44);
+
+tree.insert(51);
+prettyPrint(tree.root);
+console.log(tree.isBalanced());
