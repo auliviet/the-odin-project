@@ -236,7 +236,7 @@ class Tree {
     callback(node);
   }
 
-  // Returns the given node’s height, the number of edges in the longest path from a given node to a leaf node.
+  // Return the given node’s height, the number of edges in the longest path from a given node to a leaf node.
   height(node = this.root) {
     // Base case, return when a leave node is found.
     if (!node.left && !node.right) {
@@ -249,6 +249,35 @@ class Tree {
       let right = node.right ? this.height(node.right) : 0;
 
       return left > right ? 1 + left : 1 + right;
+    }
+  }
+
+  // Return the given node's depth, the number of edges in the path from a given node to the tree’s root node.
+  depth(node, currentNode = this.root) {
+    // Throw an error if no node is provided
+    if (!node) {
+      throw new Error("Node required as a parameter");
+    }
+
+    // Base case, return -1 when reaching an empty node.
+    if (currentNode === null) {
+      return -1;
+    }
+
+    // If the current node corresponds to the given node, return 0.
+    if (currentNode === node) {
+      return 0;
+    }
+
+    // Check if the give node is in the left or right subtree. Add 1 for each node in the path between the root and the given node.
+    else {
+      let left = this.depth(node, currentNode.left);
+      let right = this.depth(node, currentNode.right);
+
+      let depth = left > right ? left : right;
+
+      // If depth >= 0, the give node has been found.
+      return depth >= 0 ? depth + 1 : -1;
     }
   }
 }
@@ -272,5 +301,5 @@ let arr = [13, 2, 33, 3, 33, 22, 12, 41, 8];
 let tree = new Tree(arr);
 
 prettyPrint(tree.root);
-let node = tree.find(33);
-console.log(tree.height(node));
+let node = tree.find(41);
+console.log(tree.depth(node));
