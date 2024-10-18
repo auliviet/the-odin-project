@@ -1,4 +1,4 @@
-function mergesort(array) {
+export default function mergesort(array) {
   if (array.length > 1) {
     // Sort left half of the array.
     const left = mergesort(array.slice(0, Math.round(array.length / 2)));
