@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <section id="player">
+          <h2>😵‍💫 Your choice</h2>
+
+          <div class="choice">
+            <button id="rock">🪨</button>
+            <button id="paper">📄</button>
+            <button id="scissors">✂️</button>
+          </div>
+        </section>
+
+        <section id="computer">
+          <h2>🤖 Computer choice</h2>
+
+          <div class="choice">
+            <button id="computer-choice-icon"></button>
+          </div>
+        </section>
+      </div>
+    
+      <section id="results">
+        <h2>Score</h2>
+        <h3></h3>
+
+        <div class="row">
+          <div>
+            <h2>😵‍💫</h2>
+            <h2 id="player-score">0</h2>
+          </div>
+
+          <div>
+            <h2>🤖</h2>
+            <h2 id="computer-score">0</h2>
+          </div>
+        </div>
+      </section>
+
+      <section id="endgame">
+        <h2></h2>
+        <button id="play-again">Play again</button>
+      </section>
+    </div>
+  </body>
+</html>
