@@ -1,0 +1,13 @@
+# Design files
+*.sketch
+
+# Node
+**/node_modules
+**/package-lock.json
+
+# Webpack
+**/dist
+
+# System files
+**/.DS_Store
+**/.vscode
