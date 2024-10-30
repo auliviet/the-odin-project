@@ -1,13 +1,15 @@
-# The Odin Project
+# Landing Page
 
-List of projects and exercises completed as part of [The Oding Project](https://www.theodinproject.com). These projects span two curriculums:
+[The Oding Project](https://www.theodinproject.com): Landing Page.
+Exercise as part of the Foundations curriculum on working with CSS Flexbox.
 
-- [Foundations](https://www.theodinproject.com/paths/foundations/courses/foundations): introduction to all of the essential tools you'll need to build real, working websites.
+## Preview link
 
-## All projects
+[Github Pages](https://auliviet.github.io/the-odin-project/landing-page/)
 
-### Foundations path
+## Instructions
 
-HTML Foundations
+The full set of instructions can be found at [The Odin Project ](https://www.theodinproject.com/lessons/foundations-landing-page).
 
-- [Recipes](1.%20Foundations/HTML%20Foundations/Recipes)
+- Develop a landing page using CSS Flexbox to layout the page.
+- The landing page should replicate the example provided by the course material.
