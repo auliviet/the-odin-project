@@ -1,0 +1,23 @@
+.home {
+  background-image: url("../../assets/img/hero.jpg");
+  background-size: cover;
+  background-position: center;
+
+  & .home__headings {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+    gap: 4rem;
+    color: #fff;
+  
+  
+    & h1 {
+      font-size: 10rem;
+      line-height: 10rem;
+      color: #fff;
+      text-shadow: 0 0 .5rem #222;
+    }
+  }
+}
