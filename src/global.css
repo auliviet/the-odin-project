@@ -111,7 +111,7 @@ body {
   font-family: "Arial Rounded Bold";
   src:
     local("Arial Rounded Bold"),
-    url("./_assets/fonts/Arial Rounded Bold.woff") format("woff");
+    url("assets/fonts/Arial Rounded Bold.woff") format("woff");
 }
 
 :root {
