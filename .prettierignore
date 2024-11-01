@@ -1,8 +1,0 @@
-# Node
-node_modules
-package-lock.json
-
-# Webpack
-dist
-
-# Other
