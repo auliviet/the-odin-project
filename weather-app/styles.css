@@ -1,0 +1,500 @@
+/* 
+    Index:
+    - Reset
+    - Sizes
+    - Colours
+    - Typography
+    - Utilities
+*/
+
+/*  || RESET  */
+/* Credit Josh Comeau: https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/*  || SIZES  */
+html {
+  font-size: 16px;
+
+  @media (min-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+/*  || COLOURS  */
+:root {
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-500: #737373;
+  --neutral-700: #404040;
+  --neutral-900: #171717;
+  --primary: var(--neutral-700);
+  --secondary: var(--neutral-500);
+  --primary-yellow: linear-gradient(45deg, #b45309, #ca8a04);
+  --secondary-yellow: linear-gradient(45deg, #fde68a, #fef9c3);
+  --primary-blue: linear-gradient(45deg, #0369a1, #2563eb);
+  --secondary-blue: linear-gradient(45deg, #bae6fd, #dbeafe);
+  --primary-grey: linear-gradient(45deg, #404040, #57534e);
+  --secondary-grey: linear-gradient(45deg, #e5e5e5, #f5f5f4);
+  --primary-black: linear-gradient(45deg, #e2e8f0, #f3f4f6);
+  --secondary-black: linear-gradient(45deg, #020617, #111827);
+}
+
+body {
+  &.yellow {
+    background: var(--secondary-yellow);
+  }
+
+  &.blue {
+    background: var(--secondary-blue);
+  }
+
+  &.grey {
+    background: var(--secondary-grey);
+  }
+
+  &.black {
+    background: var(--secondary-black);
+    --primary: var(--neutral-100);
+    --secondary: var(--neutral-300);
+  }
+}
+
+/*  || TYPOGRAPHY */
+@font-face {
+  font-family: "Arial Rounded Bold";
+  src:
+    local("Arial Rounded Bold"),
+    url("assets/fonts/Arial Rounded Bold.woff") format("woff");
+}
+
+:root {
+  --sans-serif: "Arial Rounded Bold", Arial, sans-serif;
+}
+
+body {
+  font-family: var(--sans-serif);
+  font-size: 1rem;
+  line-height: 2rem;
+  color: var(--neutral-700);
+}
+
+/*  || UTILITIES */
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  padding: 1rem 0;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+}
+
+.large {
+  width: clamp(304px, 80%, 800px);
+  margin: auto;
+}
+
+.nav {
+  flex: 0;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    padding: 1rem;
+  }
+
+  & .nav__logo {
+    font-size: 1rem;
+    line-height: 1rem;
+    color: var(--secondary);
+
+    @media (min-width: 1024px) {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
+
+    & .nav__umbrella-required {
+      color: var(--primary);
+    }
+  }
+
+  & .nav__units {
+    flex-shrink: 0;
+    display: flex;
+    flex-flow: row;
+    border-radius: 2rem;
+    outline: 4px solid var(--neutral-200);
+    background-color: var(--neutral-200);
+
+    & .nav__unit {
+      appearance: none;
+      height: 2rem;
+      width: 3rem;
+      border-radius: 2rem;
+      background-color: var(--neutral-200);
+
+      &:before {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
+
+      &[value="metric"]:before {
+        content: "ºC";
+      }
+      &[value="us"]:before {
+        content: "ºF";
+      }
+
+      &:checked {
+        background-color: var(--neutral-700);
+        color: var(--neutral-200);
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    & label {
+      display: none;
+    }
+  }
+}
+
+.search {
+  flex: 0;
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 2rem;
+
+  & input {
+    width: 100%;
+    padding: 1rem 2rem;
+    height: 4rem;
+    font-size: 2rem;
+    line-height: 2rem;
+    background-color: var(--neutral-50);
+    border: solid 4px var(--neutral-200);
+    border-radius: 2rem;
+    color: var(--neutral-700);
+
+    &:focus {
+      outline: none;
+      border: solid 4px var(--neutral-500);
+    }
+  }
+
+  & button {
+    height: 2rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    border: 0;
+    background-color: var(--neutral-50);
+
+    &:before {
+      content: url("assets/icons/search.svg") / "Search icon";
+      font-size: 2rem;
+    }
+  }
+}
+
+.weather-today {
+  margin-bottom: 4rem;
+
+  & .weather-today__title {
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  & .weather-today__container {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+
+    @media (min-width: 1024px) {
+      flex-flow: row;
+      gap: 4rem;
+    }
+
+    & .weather-today__hero {
+      display: flex;
+      flex-flow: row;
+      gap: 2rem;
+
+      & .weather-today__hero-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 7rem;
+        width: 7rem;
+
+        @media (min-width: 1024px) {
+          height: 9rem;
+          width: 9rem;
+        }
+
+        & span {
+          height: 7rem;
+          width: 7rem;
+          mask-size: cover;
+
+          @media (min-width: 1024px) {
+            height: 9rem;
+            width: 9rem;
+            mask-size: cover;
+          }
+
+          &.clear-day {
+            mask-image: url("assets/icons/clear-day.svg");
+            background: var(--primary-yellow);
+          }
+
+          &.clear-night {
+            mask-image: url("assets/icons/clear-night.svg");
+            background: var(--primary-black);
+          }
+
+          &.cloudy {
+            mask-image: url("assets/icons/cloudy.svg");
+            background: var(--primary-grey);
+          }
+
+          &.fog {
+            mask-image: url("assets/icons/fog.svg");
+            background: var(--primary-grey);
+          }
+
+          &.partly-cloudy-day {
+            mask-image: url("assets/icons/partly-cloudy-day.svg");
+            background: var(--primary-yellow);
+          }
+
+          &.partly-cloudy-night {
+            mask-image: url("assets/icons/partly-cloudy-night.svg");
+            background: var(--primary-black);
+          }
+
+          &.rain {
+            mask-image: url("assets/icons/rain.svg");
+            background: var(--primary-blue);
+          }
+
+          &.snow {
+            mask-image: url("assets/icons/snow.svg");
+            background: var(--primary-grey);
+          }
+
+          &.wind {
+            mask-image: url("assets/icons/wind.svg");
+            background: var(--primary-blue);
+          }
+        }
+      }
+
+      & .weather-today__hero-temp {
+        font-size: 6rem;
+        line-height: 6rem;
+        color: var(--primary);
+
+        @media (min-width: 1024px) {
+          font-size: 8rem;
+          line-height: 8rem;
+        }
+      }
+
+      & .weather-today__hero-conditions {
+        font-size: 1rem;
+        line-height: 1rem;
+        color: var(--secondary);
+      }
+    }
+
+    & .weather-today__key-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 2rem;
+      grid-auto-rows: max-content;
+      row-gap: 1rem;
+      justify-items: center;
+      color: var(--primary);
+
+      & h4 {
+        color: var(--secondary);
+      }
+    }
+  }
+}
+
+.weather-forecast {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  & .weather-forecast__title {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  & .weather-forecast__container {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+
+    @media (min-width: 1024px) {
+      flex-flow: row;
+      gap: 2rem;
+    }
+  }
+
+  & .weather-forecast__item {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 1rem;
+
+    @media (min-width: 1024px) {
+      flex-flow: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    & .weather-forecast__item-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 4rem;
+      width: 4rem;
+      background-color: var(--neutral-50);
+      border-radius: 2rem;
+
+      & span {
+        width: 2rem;
+        height: 2rem;
+        mask-size: cover;
+        background-color: var(--neutral-500);
+
+        &.clear-day {
+          mask-image: url("assets/icons/clear-day.svg");
+        }
+
+        &.clear-night {
+          mask-image: url("assets/icons/clear-night.svg");
+        }
+
+        &.cloudy {
+          mask-image: url("assets/icons/cloudy.svg");
+        }
+
+        &.fog {
+          mask-image: url("assets/icons/fog.svg");
+        }
+
+        &.partly-cloudy-day {
+          mask-image: url("assets/icons/partly-cloudy-day.svg");
+        }
+
+        &.partly-cloudy-night {
+          mask-image: url("assets/icons/partly-cloudy-night.svg");
+        }
+
+        &.rain {
+          mask-image: url("assets/icons/rain.svg");
+        }
+
+        &.snow {
+          mask-image: url("assets/icons/snow.svg");
+        }
+
+        &.wind {
+          mask-image: url("assets/icons/wind.svg");
+        }
+      }
+    }
+
+    & .weather-forecast__item-info {
+      & .weather-forecast__item-date {
+        font-size: 1rem;
+        line-height: 1rem;
+        color: var(--secondary);
+      }
+
+      & .weather-forecast__item-temp {
+        font-size: 2rem;
+        line-height: 2rem;
+        color: var(--primary);
+
+        @media (min-width: 1024px) {
+          font-size: 1rem;
+          line-height: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.loading {
+  width: 8rem;
+  height: 8rem;
+  margin: auto;
+}
+
