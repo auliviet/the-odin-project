@@ -38,6 +38,7 @@ JavaScript
 - [Todo List](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Organizing%20Your%20JavaScript%20Code/Todo%20List)
 - [Weather App](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Asynchronous%20JavaScript%20and%20APIs/Weather%20App)
 - [Data Structures and Algorithms](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/A%20Bit%20of%20Computer%20Science)
+- [Unit Testing](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Testing%20JavaScript/Testing%20Practice)
 
 ### Foundations path
 
