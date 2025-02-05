@@ -1,0 +1,31 @@
+/*
+- Gameboard class
+- Gameboard is a 2D array of 10 by 10 cells
+-- Each cell can have a boat placed on it
+-- Each cell has a default if no boat is placed on it
+-- Each cell needs to record if it has been played or not
+-- Each cell has a default value if it has not been played
+- Gameboard has a list of ships, with their size
+-- The list of ships should be the same for both players
+-- There should be a default list of ships
+- Gameboards should be able to place ships at specific coordinates by calling the ship factory or class.
+-- placeShip() function
+-- receives a length, a direction and a starting point
+-- the coordinates taken by a ship depends on the length, direction and starting point
+-- ship can only be placed within the board
+-- ship cannot start outside the board
+-- ship cannot end outside the board
+-- ship cannot overlap another ship
+-- there should be 1 empty cell around the cells taken by an existing ship
+- Gameboards should have a receiveAttack function that takes a pair of coordinates, determines whether or not the attack hit a ship and then sends the ‘hit’ function to the correct ship, or records the coordinates of the missed shot.
+-- receiveAttack() function
+-- receiveAttack is valid if the coordinates are on the board
+-- receiveAttack is invalid if the coordinates are outside the board
+-- receiveAttack is invalid if the coordinates have already been played
+-- receiveAttack adds a hit to the correct boat, if the boat is placed on this cell
+-- receiveAttack records if a cell has been played
+Gameboards should be able to report whether or not all of their ships have been sunk.
+-- allShipsSunk() function
+-- allShipsSunk is true if all ships are sunk
+-- allShipsSunk is false if one ship or more is not sunk
+*/
