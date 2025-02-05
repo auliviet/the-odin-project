@@ -1,0 +1,24 @@
+/*
+- Game class
+- Set up a new game by creating Players. 
+-- Each game should have 2 players
+-- At least one player should be of type "real" and have a name
+-- One player should be active
+-- One player should be the opponent
+- Allow players to populate their boards
+-- The default value for the board should be pre-populated
+- You should display both the player’s boards and render them using information from the Gameboard class/factory.
+-- Game returns the boards of activePlayer and opponent
+- Step through the game turn by turn using only methods from other objects.
+-- playRound() function
+-- get input from the player about the cell to attack
+-- if the input is incorrect, asks again
+-- if the input is correct, attack the cell
+-- verify if all ships are sunk
+-- if yes, game is finished. Active player wins
+--- Game ends
+-- if not, verify if the attack hit a ship
+--- if yes, active player to play another round
+--- if not, switch active player and opponent
+-- new playRound()
+*/

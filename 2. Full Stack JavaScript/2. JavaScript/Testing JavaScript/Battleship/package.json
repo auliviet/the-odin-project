@@ -1,0 +1,38 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev": "webpack serve --open-app-name 'Firefox Developer Edition' --config webpack.dev.js",
+    "lint": "eslint src/",
+    "lint:fix": "eslint --fix src/",
+    "pretty": "prettier --check src/",
+    "pretty:fix": "prettier --write src/",
+    "check": "npm run lint & npm run pretty",
+    "fix": "npm run lint:fix & npm run pretty:fix",
+    "build": "webpack --config webpack.prod.js",
+    "test": "jest --verbose",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
+  },
+  "author": "Auliviet",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@eslint/js": "^9.9.0",
+    "babel-jest": "^29.7.0",
+    "css-loader": "^7.1.2",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "html-loader": "^5.0.0",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "jest": "^29.7.0",
+    "prettier": "3.3.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4",
+    "webpack-merge": "^6.0.1"
+  }
+}
