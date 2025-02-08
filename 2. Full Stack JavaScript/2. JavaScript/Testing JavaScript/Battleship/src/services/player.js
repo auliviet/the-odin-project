@@ -1,14 +1,21 @@
-/*
-- Player class
-- Player has a type
--- Type is "real" for real players
--- Type is "computer" for computers
--- Default type is "computer"
--- If default name is overwritten, the type should be updated
-- Player has a name
--- Name is custom for real players
--- Name is "computer" for computers
--- Default name is "computer"
--- Default name can be overwritten
-- Each player has its own game board
-*/
+import { Gameboard } from "./gameboard";
+
+/** Class representing a player for the game. */
+export default class Player {
+  #TYPES = ["computer", "real"];
+
+  /** Create a player.
+   * @param {string} name - The name of the player (default is "computer"). This name is used to distinguish between a computer player and a real player.
+   */
+  constructor(name = "computer") {
+    this.name = name;
+    this.gameboard = new Gameboard();
+  }
+
+  /** Get the type of the player. Determines if the player is a "computer" or a "real" player based on the name.
+   * @returns {string} "computer" if the player's name is "computer", otherwise "real".
+   */
+  get type() {
+    return this.name === this.#TYPES[0] ? this.#TYPES[0] : this.#TYPES[1];
+  }
+}
