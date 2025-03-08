@@ -1,0 +1,135 @@
+/*  || RESET  */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    border: none;
+    vertical-align: baseline;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+}
+
+article, 
+aside, 
+footer, 
+header, 
+menu, 
+nav, 
+section {
+	display: block;
+}
+
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+
+/*  || SIZES  */
+html {
+  font-size: 12px;
+
+  @media (min-width: 768px) {font-size: 16px;}
+  @media (min-width: 1024px) {font-size: 18px;}
+}
+
+/*  || COLOURS  */
+:root {
+  --dark-blue: #003049;
+  --light-blue: #669BBC; 
+  --dark-red: #780000;
+  --light-red: #C1121F;
+  --light-beige: #FDF0D5;
+  --dark-beige: #F9D280;
+  --dark-grey: #404040;
+  --light-grey: #A3A3A3;
+}
+
+html {
+  background-color: var(--dark-blue);
+  color: var(--light-beige);
+}
+
+
+/*  || TYPOGRAPHY */
+@font-face {
+  font-family: "Impact";
+  src:
+    local("Impact"),
+    url("impact.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Monaco";
+  src:
+    local("Monaco"),
+    url("monaco.ttf") format("ttf");
+}
+
+:root {
+  --sans-serif: "Impact", Arial, sans-serif;
+  --mono: "Monaco", monospace;
+}
+
+body {
+  font-size: 1rem; 
+  line-height: 2rem;
+  font-family: var(--sans-serif);
+}
+
+
+/*  || UTILITIES */
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  margin: auto;
+
+  @media (min-width: 1024px) {
+    width: 100%;
+  }
+}
+
+main {
+  flex: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.game-area {
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  width: 22rem;
+  margin: auto;
+  text-align: center;
+
+  @media (min-width: 768px) {  
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 4rem;
+    gap: 2rem;
+    justify-items: center;
+    width: auto;
+  }
+
+  & .player-area {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+}

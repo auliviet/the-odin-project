@@ -1,0 +1,27 @@
+nav {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+
+  & h1 {
+    font-size: 2rem;
+    text-shadow: 4px 4px var(--dark-red); 
+  }
+
+  & button {
+    font-size: 2rem;
+    font-family: var(--mono);
+    color: var(--light-beige);
+    text-decoration: underline;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--dark-beige);
+    }
+  }
+}
+
+.homepage > nav > h1 {
+  visibility: hidden; 
+}

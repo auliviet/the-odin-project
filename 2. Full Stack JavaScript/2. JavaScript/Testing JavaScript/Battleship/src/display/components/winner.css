@@ -1,0 +1,20 @@
+.game-winner {
+  grid-column: 1 / -1;
+  position: relative;
+  bottom: 8rem;
+
+  & button {
+    margin-top: 1rem;
+    font-family: var(--sans-serif);
+    font-size: 2rem;
+    line-height: 4rem;
+    color: var(--light-beige);
+    background-color: var(--light-red);
+    width: 100%;
+
+    &:hover {
+      background-color: var(--dark-red);
+      cursor: pointer;
+    }
+  }
+}

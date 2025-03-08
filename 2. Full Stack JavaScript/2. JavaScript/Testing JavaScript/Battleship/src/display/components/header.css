@@ -1,0 +1,29 @@
+header {
+  margin: auto;
+  text-align: center;
+  width: fit-content;
+  
+  & h1 {
+    font-size: 4rem;
+    line-height: 12rem;
+    text-shadow: 0.5rem 0.5rem var(--dark-red);
+
+    @media (min-width: 768px) {
+      font-size: 8rem;
+    }
+  }
+
+  & button {
+    font-family: var(--sans-serif);
+    font-size: 2rem;
+    line-height: 4rem;
+    color: var(--light-beige);
+    background-color: var(--light-red);
+    width: 100%;
+
+    &:hover {
+      background-color: var(--dark-red);
+      cursor: pointer;
+    }
+  }
+}
