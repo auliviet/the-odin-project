@@ -1,0 +1,64 @@
+.player-board {
+  grid-row: 1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(11, 1fr); 
+  grid-template-columns: repeat(11, 1fr);
+  width: fit-content;
+
+  & > .header {
+    font-family: var(--mono);
+    font-size: 1rem;
+    border: none;
+  }
+
+  & > * {
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    border: 1px solid var(--light-blue); 
+
+    &.ship {
+      background-color: var(--light-blue);
+    }
+
+    &.hit, 
+    &.sunk{
+      background-color: var(--light-blue);
+      background-image: url("../../assets/hit.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 1rem;
+
+      &.target {
+        background-color: var(--dark-blue);
+      }
+    }
+
+    &.miss{
+      background-image: url("../../assets/miss.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 1rem;
+    }
+
+    &.sunk.target {
+      background-color: var(--light-blue);
+      border: 1px solid var(--light-blue);
+    }
+
+    &.target {
+      cursor: pointer;
+
+      &.ship {
+        background-color: var(--dark-blue);
+      }
+    }
+  }
+
+  & > .active {
+    background-color: chartreuse;
+  }
+}

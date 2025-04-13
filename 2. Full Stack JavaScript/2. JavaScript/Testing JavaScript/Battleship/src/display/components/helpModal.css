@@ -1,0 +1,22 @@
+.nav__modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem 2rem;
+  background-color: var(--dark-blue);
+  font-family: var(--mono);
+
+  &.hidden {
+    display: none;
+  }
+
+  & .nav__modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}

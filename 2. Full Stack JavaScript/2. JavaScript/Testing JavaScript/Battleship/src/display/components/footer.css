@@ -1,0 +1,12 @@
+footer {
+  text-align: center;
+  font-family: var(--mono);
+
+  & a {
+    color: var(--light-beige);
+
+    &:hover {
+      color: var(--dark-beige);
+    }
+  }
+}

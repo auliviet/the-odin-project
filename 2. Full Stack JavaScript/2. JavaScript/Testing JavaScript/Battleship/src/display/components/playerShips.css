@@ -1,0 +1,39 @@
+.player-ships {
+  grid-row: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  max-width: 28rem;
+
+  & .ship {
+    display: flex;
+    height: 1.5rem;
+    border: 3px solid var(--light-blue);
+
+    @media (min-width: 768px) {
+      border: 4px solid var(--light-blue); 
+    }
+
+    &.sunk {
+      border-color: var(--dark-red);
+    }
+
+    & .ship-cell {
+      width: 1.5rem;
+      height: 1rem;
+      background: url("../../assets/ship-miss.svg") no-repeat center;
+      background-size: .5rem;
+
+      &.hit {
+        background: url("../../assets/hit.svg") no-repeat center;
+        background-size: .5rem;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    &:nth-of-type(4) {
+      justify-content: flex-end;
+    }
+  }
+}

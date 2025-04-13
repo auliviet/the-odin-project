@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Hits</title>
+    <g id="Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop---2-Players-gameboard" transform="translate(-1090, -546)" fill="#C1121F" stroke="#780000" stroke-width="4">
+            <g id="Player-2-Grid" transform="translate(756, 221)">
+                <g id="Plays" transform="translate(109, 55)">
+                    <g id="Sunken-ship" transform="translate(216, 215)">
+                        <circle id="Hits" cx="22.5" cy="68.5" r="11.5"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
