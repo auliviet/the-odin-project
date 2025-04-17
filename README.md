@@ -7,6 +7,13 @@ List of projects and exercises completed as part of [The Oding Project](https://
 
 ## Selected projects
 
+## BATTLE/SHIP
+
+Simple game of battleship using vanilla JavaScript and Jest for unit testing.
+
+- [Source code](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Testing%20JavaScript/Battleship)
+- [Preview link](https://auliviet.github.io/the-odin-project/battleship/)
+
 ### Do I need an umbrella?
 
 Do I need an Umbrella? provides weather forecast for a specified location by querying the [Visualcrossing](https://www.visualcrossing.com) API.
@@ -39,6 +46,7 @@ JavaScript
 - [Weather App](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Asynchronous%20JavaScript%20and%20APIs/Weather%20App)
 - [Data Structures and Algorithms](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/A%20Bit%20of%20Computer%20Science)
 - [Unit Testing](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Testing%20JavaScript/Testing%20Practice)
+- [Battleship](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Testing%20JavaScript/Battleship)
 
 ### Foundations path
 
