@@ -1,0 +1,449 @@
+/*  || RESET  */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    border: none;
+    vertical-align: baseline;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+}
+
+article, 
+aside, 
+footer, 
+header, 
+menu, 
+nav, 
+section {
+	display: block;
+}
+
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+
+/*  || SIZES  */
+html {
+  font-size: 12px;
+
+  @media (min-width: 768px) {font-size: 16px;}
+  @media (min-width: 1024px) {font-size: 18px;}
+}
+
+/*  || COLOURS  */
+:root {
+  --dark-blue: #003049;
+  --light-blue: #669BBC; 
+  --dark-red: #780000;
+  --light-red: #C1121F;
+  --light-beige: #FDF0D5;
+  --dark-beige: #F9D280;
+  --dark-grey: #404040;
+  --light-grey: #A3A3A3;
+}
+
+html {
+  background-color: var(--dark-blue);
+  color: var(--light-beige);
+}
+
+
+/*  || TYPOGRAPHY */
+@font-face {
+  font-family: "Impact";
+  src:
+    local("Impact"),
+    url(2f7e2866715e8f8e0af9.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: "Monaco";
+  src:
+    local("Monaco"),
+    url(b6396220597d8ef47d3f.ttf) format("ttf");
+}
+
+:root {
+  --sans-serif: "Impact", Arial, sans-serif;
+  --mono: "Monaco", monospace;
+}
+
+body {
+  font-size: 1rem; 
+  line-height: 2rem;
+  font-family: var(--sans-serif);
+}
+
+
+/*  || UTILITIES */
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  margin: auto;
+
+  @media (min-width: 1024px) {
+    width: 100%;
+  }
+}
+
+main {
+  flex: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.game-area {
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  width: 22rem;
+  margin: auto;
+  text-align: center;
+
+  @media (min-width: 768px) {  
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 4rem;
+    gap: 2rem;
+    justify-items: center;
+    width: auto;
+
+    & .player-area:nth-of-type(2) .player-ships {
+      justify-content: flex-end;
+    }
+  }
+
+  & .player-area {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+header {
+  margin: auto;
+  text-align: center;
+  width: fit-content;
+  
+  & h1 {
+    font-size: 4rem;
+    line-height: 12rem;
+    text-shadow: 0.5rem 0.5rem var(--dark-red);
+    opacity: 0;
+    animation: 4s fade-in forwards; 
+    animation-delay: 1s;
+
+    @media (min-width: 768px) {
+      font-size: 8rem;
+    }
+
+    
+  }
+
+  & button {
+    font-family: var(--sans-serif);
+    font-size: 2rem;
+    line-height: 4rem;
+    color: var(--light-beige);
+    background-color: var(--light-red);
+    width: 100%;
+    transition: background-color .2s ease-out;
+    animation: 1s fade-in forwards;
+    animation-delay: 2s;
+    opacity: 0;
+
+    &:hover {
+      background-color: var(--dark-red);
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.player-form.one-player {
+  width: 18rem;
+  margin: auto;
+
+  & label,
+  & .player-form__difficulty {
+    margin-top: 2rem;
+    font-family: var(--mono);
+  }
+
+  & input {
+    padding: 0 .5rem;
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 2rem;
+    line-height: 4rem;
+    color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+  }
+
+  & input[type="submit"] {
+    margin-top: 4rem;
+    font-family: var(--sans-serif);
+    color: var(--light-beige);
+    background-color: var(--light-red);
+    border: none;
+    transition: background-color 0.2s ease-out;
+
+    &:hover {
+      background-color: var(--dark-red);
+      cursor: pointer;
+    }
+  }
+
+  & .player-form__difficulty-spinner {
+    display: flex;
+    flex-flow: row;
+
+    & #player-form__difficulty-value {
+      flex: 1;
+      font-family: var(--sans-serif);
+      font-size: 2rem;
+      line-height: 4rem;
+      text-align: center;
+    }
+
+    & button {
+      width: 4rem;
+      height: 4rem;
+      font-family: var(--sans-serif);
+      font-size: 2rem;
+      line-height: 4rem;
+      color: var(--light-red);
+      background-color: transparent;
+      cursor: pointer;
+      transition: color 0.2s ease-out;
+
+      &:hover {
+        color: var(--dark-red);
+      }
+    }
+  }
+}
+.player-board {
+  grid-row: 1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(11, 1fr); 
+  grid-template-columns: repeat(11, 1fr);
+  width: fit-content;
+
+  & > .header {
+    font-family: var(--mono);
+    font-size: 1rem;
+    border: none;
+  }
+
+  & > * {
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    border: 1px solid var(--light-blue); 
+    transition: background-color .1s ease-out;
+
+    &.ship {
+      background-color: var(--light-blue);
+    }
+
+    &.hit, 
+    &.sunk{
+      background-color: var(--light-blue);
+      background-image: url(016266a33356a3922208.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 1rem;
+
+      &.target {
+        background-color: var(--dark-blue);
+      }
+    }
+
+    &.miss{
+      background-image: url(929aea7218609082f46d.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 1rem;
+      background-color: var(--dark-blue);
+    }
+
+    &.sunk.target {
+      background-color: var(--light-blue);
+      border: 1px solid var(--light-blue);
+    }
+
+    &.target {
+      cursor: pointer;
+
+      &.ship {
+        background-color: var(--dark-blue);
+      }
+
+      &:hover:not(.miss) {
+        background-color: var(--light-blue);
+      }
+    }
+  }
+
+  & > .active {
+    background-color: chartreuse;
+  }
+}
+.player-ships {
+  grid-row: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  max-width: 28rem;
+  justify-content: center;
+
+  & .ship {
+    display: flex;
+    height: 1.5rem;
+    border: 3px solid var(--light-blue);
+
+    @media (min-width: 768px) {
+      border: 4px solid var(--light-blue); 
+    }
+
+    &.sunk {
+      border-color: var(--dark-red);
+    }
+
+    & .ship-cell {
+      width: 1.5rem;
+      height: 1rem;
+      background: url(ba0846ee2d05312d1b62.svg) no-repeat center;
+      background-size: .5rem;
+
+      &.hit {
+        background: url(016266a33356a3922208.svg) no-repeat center;
+        background-size: .5rem;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
+}
+.game-winner {
+  grid-column: 1 / -1;
+  position: relative;
+  bottom: 8rem;
+
+  & button {
+    margin-top: 1rem;
+    font-family: var(--sans-serif);
+    font-size: 2rem;
+    line-height: 4rem;
+    color: var(--light-beige);
+    background-color: var(--light-red);
+    width: 100%;
+    transition: background-color 0.2s ease-out;
+
+    &:hover {
+      background-color: var(--dark-red);
+      cursor: pointer;
+    }
+  }
+}
+.nav__modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem 2rem;
+  background-color: var(--dark-blue);
+  font-family: var(--mono);
+  transform: translateY(0);
+  transition: 
+    visibility .4s ease-out, 
+    transform .4s ease-out;
+
+  &.hidden {
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: 
+      visibility .6s ease-in, 
+      transform .6s ease-in;
+  }
+
+  & .nav__modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+nav {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+
+  & h1 {
+    font-size: 2rem;
+    text-shadow: 4px 4px var(--dark-red); 
+  }
+
+  & button {
+    font-size: 2rem;
+    font-family: var(--mono);
+    color: var(--light-beige);
+    text-decoration: underline;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--dark-beige);
+    }
+  }
+}
+
+.homepage > nav > h1 {
+  visibility: hidden; 
+}
+
+footer {
+  text-align: center;
+  font-family: var(--mono);
+
+  & a {
+    color: var(--light-beige);
+
+    &:hover {
+      color: var(--dark-beige);
+    }
+  }
+}
