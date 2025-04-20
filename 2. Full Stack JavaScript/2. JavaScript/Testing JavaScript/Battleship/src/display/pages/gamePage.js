@@ -79,7 +79,7 @@ export default class GamePage {
    * @param {HTMLElement} gameArea - The game area element where the winner section will be appended.
    */
   #winnerSection(gameArea) {
-    const winnerComponent = new Winner(this.player1.name).render();
+    const winnerComponent = new Winner(this.game.winner.name).render();
     const button = winnerComponent.querySelector("button");
     this.#addResetEvent(button);
 
