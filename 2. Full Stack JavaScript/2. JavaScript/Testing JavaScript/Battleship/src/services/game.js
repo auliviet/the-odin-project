@@ -42,11 +42,16 @@ export default class Game {
     }
 
     this.#difficulty = this.#DIFFICULTIES[difficultyIndex];
+
+    if (this.player2.type === "computer") {
+      this.player2.difficulty = this.#DIFFICULTIES.indexOf(this.#difficulty);
+    }
   }
 
   /** Execute a play by attacking the opponent's gameboard at the specified cell. If the active player is an AI, it automatically selects a cell to attack. If the attack results in all opponent's ships being sunk, the current player is declared the winner.
    * @param {Array} cell - An array containing the column and row to attack.
    * @throws {Error} Throws an error if the attack is invalid.
+   * @returns {void}
    */
   play(cell) {
     if (this.winner) {
@@ -55,14 +60,19 @@ export default class Game {
 
     // Auto-play for AI
     if (this.activePlayer.type === "computer") {
-      cell = this.activePlayer.play();
+      cell = this.activePlayer.play(this.opponent.gameboard.board);
     }
 
     try {
       let attack = this.opponent.gameboard.receiveAttack(cell);
+      if (attack && this.activePlayer.type === "computer") {
+        this.activePlayer.addSuccessfulPlay(cell);
+      }
+
       if (this.opponent.gameboard.areAllShipsSunk()) {
         this.winner = this.activePlayer;
       }
+
       if (!attack) {
         this.#switchActivePlayers();
       }

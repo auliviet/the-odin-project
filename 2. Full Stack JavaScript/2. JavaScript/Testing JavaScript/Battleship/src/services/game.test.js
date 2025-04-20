@@ -38,6 +38,7 @@ beforeEach(() => {
         areAllShipsSunk: areAllShipsSunkMock,
       },
       play: aiPlay,
+      addSuccessfulPlay: jest.fn(),
     };
   });
 
@@ -130,8 +131,8 @@ describe("Game.play()", () => {
 
   test("Game.play() returns the name of the winner, if there is a winner", () => {
     // Simulate all ships being sunk
-    areAllShipsSunkMock.mockReturnValueOnce(true);
 
+    areAllShipsSunkMock.mockReturnValueOnce(true);
     expect(game.winner).toBeNull();
 
     game.play();

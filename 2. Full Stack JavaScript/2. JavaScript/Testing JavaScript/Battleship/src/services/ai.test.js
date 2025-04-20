@@ -1,8 +1,23 @@
 import AI from "./ai";
+import { Gameboard } from "./gameboard";
+
+jest.mock("./gameboard");
 
 let ai;
 
 beforeEach(() => {
+  jest.resetAllMocks();
+
+  Gameboard.mockImplementation(() => {
+    return {
+      board: [
+        [{ isPlayed: false }, { isPlayed: false }, { isPlayed: false }],
+        [{ isPlayed: false }, { isPlayed: false }, { isPlayed: false }],
+        [{ isPlayed: false }, { isPlayed: false }, { isPlayed: false }],
+      ],
+    };
+  });
+
   ai = new AI();
 });
 
@@ -45,31 +60,42 @@ describe("AI class", () => {
 
 describe("AI.play()", () => {
   test("AI.play() returns a random cell to attack", () => {
-    // Test 20 consecutive plays;
-    for (let i = 0; i < 20; i++) {
-      let cell = ai.play();
+    // Test 9 consecutive plays;
+    for (let i = 0; i < 9; i++) {
+      const opponentBoard = new Gameboard();
+      const maxSize = opponentBoard.board.length;
+      let cell = ai.play(opponentBoard.board);
 
       expect(cell[0]).toBeGreaterThanOrEqual(0);
-      expect(cell[0]).toBeLessThanOrEqual(9);
+      expect(cell[0]).toBeLessThan(maxSize);
       expect(cell[1]).toBeGreaterThanOrEqual(0);
-      expect(cell[1]).toBeLessThanOrEqual(9);
+      expect(cell[1]).toBeLessThan(maxSize);
     }
   });
 
   test("AI.play() does not attack a cell that has already been played", () => {
-    // Test 100 consecutive plays;
-    const playedCells = [];
+    const opponentBoard = new Gameboard();
+    opponentBoard.board[0][0].isPlayed = true;
 
-    for (let i = 0; i < 100; i++) {
-      let cell = ai.play();
+    // Test 8 consecutive plays;
+    for (let i = 0; i < 8; i++) {
+      let cell = ai.play(opponentBoard.board);
 
-      // Check if the cell is already in playedCells
-      expect(
-        playedCells.some((item) => item[0] === cell[0] && item[1] === cell[1])
-      ).toBeFalsy();
-
-      // Add the cell to the playedCells array
-      playedCells.push(cell);
+      expect(cell).not.toEqual([0, 0]);
     }
+  });
+
+  test("AI.play() priortise cells adjacent to the last successful hit if the difficulty is hard", () => {
+    const opponentBoard = new Gameboard();
+
+    ai.difficulty = 1;
+
+    opponentBoard.board[1][1].isPlayed = true;
+    ai.addSuccessfulPlay([1, 1]);
+
+    let cell = ai.play(opponentBoard.board);
+    console.log(cell);
+
+    expect(cell).toEqual([0, 1]);
   });
 });

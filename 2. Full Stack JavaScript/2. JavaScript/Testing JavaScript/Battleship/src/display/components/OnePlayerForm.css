@@ -2,7 +2,9 @@
   width: 18rem;
   margin: auto;
 
-  & label {
+  & label,
+  & .player-form__difficulty {
+    margin-top: 2rem;
     font-family: var(--mono);
   }
 
@@ -26,6 +28,34 @@
     &:hover {
       background-color: var(--dark-red);
       cursor: pointer;
+    }
+  }
+
+  & .player-form__difficulty-spinner {
+    display: flex;
+    flex-flow: row;
+
+    & #player-form__difficulty-value {
+      flex: 1;
+      font-family: var(--sans-serif);
+      font-size: 2rem;
+      line-height: 4rem;
+      text-align: center;
+    }
+
+    & button {
+      width: 4rem;
+      height: 4rem;
+      font-family: var(--sans-serif);
+      font-size: 2rem;
+      line-height: 4rem;
+      color: var(--light-red);
+      background-color: transparent;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--dark-red);
+      }
     }
   }
 }

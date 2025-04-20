@@ -2,7 +2,7 @@ import "./OnePlayerForm.css";
 
 /** Class representing the form for one-player. */
 export default class OnePlayerForm {
-  #DIFFICULTIES = ["EASY", "MEDIUM", "HARD"];
+  #DIFFICULTIES = ["EASY", "HARD"];
 
   /** Creates a new OnePlayerForm component.
    * @param {Display} display - The display object to render the game.
@@ -19,14 +19,7 @@ export default class OnePlayerForm {
     form.method = "post";
     form.className = "player-form one-player";
 
-    form.append(
-      this.#playerName(),
-      /*
-        Re-add when difficuluty is available
-      */
-      //this.#difficulty(),
-      this.#startButton()
-    );
+    form.append(this.#playerName(), this.#difficulty(), this.#startButton());
 
     return form;
   }
@@ -134,19 +127,14 @@ export default class OnePlayerForm {
 
       // Get the values from the form
       const player1Name = this.player1Name.value;
-      /*
-        Re-add when difficulty is ready
-      */
-      //const difficulty = this.#DIFFICULTIES.indexOf(
-      //  this.difficulty.textContent
-      //);
+
+      const difficulty = this.#DIFFICULTIES.indexOf(
+        this.difficulty.textContent
+      );
 
       // Update the Game obect
       this.display.game.player1.name = player1Name;
-      /*
-        Re-add when difficulty is ready
-      */
-      // this.display.game.difficulty = difficulty;
+      this.display.game.difficulty = difficulty;
 
       // Display the next page
       this.display.render("game");
