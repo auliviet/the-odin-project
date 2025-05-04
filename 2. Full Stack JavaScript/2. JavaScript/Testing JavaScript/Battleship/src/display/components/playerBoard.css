@@ -19,6 +19,7 @@
     align-items: center;
     aspect-ratio: 1;
     border: 1px solid var(--light-blue); 
+    transition: background-color .1s ease-out;
 
     &.ship {
       background-color: var(--light-blue);
@@ -42,6 +43,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: 1rem;
+      background-color: var(--dark-blue);
     }
 
     &.sunk.target {
@@ -54,6 +56,10 @@
 
       &.ship {
         background-color: var(--dark-blue);
+      }
+
+      &:hover:not(.miss) {
+        background-color: var(--light-blue);
       }
     }
   }

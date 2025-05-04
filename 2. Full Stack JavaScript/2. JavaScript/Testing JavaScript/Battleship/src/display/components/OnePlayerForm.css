@@ -24,6 +24,7 @@
     color: var(--light-beige);
     background-color: var(--light-red);
     border: none;
+    transition: background-color 0.2s ease-out;
 
     &:hover {
       background-color: var(--dark-red);
@@ -52,6 +53,7 @@
       color: var(--light-red);
       background-color: transparent;
       cursor: pointer;
+      transition: color 0.2s ease-out;
 
       &:hover {
         color: var(--dark-red);

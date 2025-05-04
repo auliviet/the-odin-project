@@ -2,6 +2,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -9,9 +10,17 @@
   padding: 1rem 2rem;
   background-color: var(--dark-blue);
   font-family: var(--mono);
+  transform: translateY(0);
+  transition: 
+    visibility .4s ease-out, 
+    transform .4s ease-out;
 
   &.hidden {
-    display: none;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: 
+      visibility .6s ease-in, 
+      transform .6s ease-in;
   }
 
   & .nav__modal-close {

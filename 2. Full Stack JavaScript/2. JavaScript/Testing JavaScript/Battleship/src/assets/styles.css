@@ -123,6 +123,10 @@ main {
     gap: 2rem;
     justify-items: center;
     width: auto;
+
+    & .player-area:nth-of-type(2) .player-ships {
+      justify-content: flex-end;
+    }
   }
 
   & .player-area {
@@ -131,5 +135,4 @@ main {
     gap: 1rem;
     align-items: center;
   }
-  
 }
