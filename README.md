@@ -7,7 +7,7 @@ List of projects and exercises completed as part of [The Oding Project](https://
 
 ## Selected projects
 
-## BATTLE/SHIP
+### BATTLE/SHIP
 
 Simple game of battleship using vanilla JavaScript and Jest for unit testing.
 
@@ -47,6 +47,10 @@ JavaScript
 - [Data Structures and Algorithms](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/A%20Bit%20of%20Computer%20Science)
 - [Unit Testing](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Testing%20JavaScript/Testing%20Practice)
 - [Battleship](2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Testing%20JavaScript/Battleship)
+
+Advanced HTML and CSS
+
+- [Animations](2.%20Full%20Stack%20JavaScript/3.%20Advancded%20HTML%20and%20CSS/Animations)
 
 ### Foundations path
 
