@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.ts",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
@@ -26,7 +26,12 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
       },
+      { test: /\.tsx?$/, loader: "ts-loader" },
     ],
+  },
+  resolve: {
+    // Add '.ts' and '.tsx' as resolvable extensions.
+    extensions: [".ts", ".js"],
   },
   output: {
     filename: "bundle.js",

@@ -1,20 +1,23 @@
 import Player from "./player";
 import AI from "./ai";
+import { Coordinates } from "./gameboard";
 
 /** Class representing an instance of the game. */
 export default class Game {
   #DIFFICULTIES = ["EASY", "MEDIUM", "HARD"];
   #difficulty = this.#DIFFICULTIES[0];
+  player1: Player;
+  player2: Player | AI;
+  activePlayer: Player | AI;
+  opponent: Player | AI;
+  realPlayers: number;
+  winner: null | Player | AI;
 
   /** Create a new game.
-   * @param {String} player1Name - The name of player 1 (default is "Player").
-   * @param {String} player2Name - The name of player 2 (if not provided, an AI player is created).
    */
-  constructor(player1Name = "Player", player2Name) {
+  constructor(player1Name = "Player", player2Name?: string) {
     this.player1 = new Player(player1Name);
-    this.player2 = player2Name
-      ? new Player(player2Name)
-      : new AI(this.#DIFFICULTIES.indexOf(this.#difficulty));
+    this.player2 = player2Name ? new Player(player2Name) : new AI();
     this.activePlayer = this.player1;
     this.opponent = this.player2;
     this.realPlayers = 1;
@@ -26,16 +29,14 @@ export default class Game {
   }
 
   /** Get the current difficulty level of the game.
-   * @returns {String} The current difficulty level (EASY, MEDIUM, HARD).
    */
-  get difficulty() {
+  get difficulty(): string {
     return this.#difficulty;
   }
 
   /** Set the difficulty level of the game. Validates the input index and updates the difficulty level accordingly.
-   * @param {Number} difficultyIndex - The index of the difficulty level (0 for EASY, 1 for MEDIUM, 2 for HARD).
    */
-  set difficulty(difficultyIndex = 0) {
+  set difficulty(difficultyIndex: number) {
     // Validate input
     if (difficultyIndex < 0 || difficultyIndex > 2) {
       difficultyIndex = 0;
@@ -43,29 +44,26 @@ export default class Game {
 
     this.#difficulty = this.#DIFFICULTIES[difficultyIndex];
 
-    if (this.player2.type === "computer") {
+    if (this.player2 instanceof AI) {
       this.player2.difficulty = this.#DIFFICULTIES.indexOf(this.#difficulty);
     }
   }
 
   /** Execute a play by attacking the opponent's gameboard at the specified cell. If the active player is an AI, it automatically selects a cell to attack. If the attack results in all opponent's ships being sunk, the current player is declared the winner.
-   * @param {Array} cell - An array containing the column and row to attack.
-   * @throws {Error} Throws an error if the attack is invalid.
-   * @returns {void}
    */
-  play(cell) {
+  play(cell: Coordinates = [0, 0]): void {
     if (this.winner) {
       return;
     }
 
     // Auto-play for AI
-    if (this.activePlayer.type === "computer") {
+    if (this.#isAI(this.activePlayer)) {
       cell = this.activePlayer.play(this.opponent.gameboard.board);
     }
 
     try {
       let attack = this.opponent.gameboard.receiveAttack(cell);
-      if (attack && this.activePlayer.type === "computer") {
+      if (attack && this.#isAI(this.activePlayer)) {
         this.activePlayer.addSuccessfulPlay(cell);
       }
 
@@ -77,7 +75,11 @@ export default class Game {
         this.#switchActivePlayers();
       }
     } catch (error) {
-      throw new Error(error);
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error("An unknown error occurred");
+      }
     }
 
     if (this.activePlayer.type === "computer") {
@@ -92,11 +94,17 @@ export default class Game {
   resetGame() {
     const player1Name = this.player1.name;
     const player2Name = this.player2.name;
-    const difficulty = this.player2.difficulty;
 
     this.player1 = new Player(player1Name);
-    this.player2 =
-      this.realPlayers > 1 ? new Player(player2Name) : new AI(difficulty);
+
+    if (this.#isAI(this.player2)) {
+      const difficulty = this.player2.difficulty;
+      const newAI = new AI();
+      newAI.difficulty = difficulty;
+      this.player2 = newAI;
+    } else {
+      this.player2 = new Player(player2Name);
+    }
 
     this.activePlayer = this.player1;
     this.opponent = this.player2;
@@ -110,9 +118,14 @@ export default class Game {
 
   /** Switch the active player and the opponent. This method is used to alternate turns between players during the game.
    */
-  #switchActivePlayers() {
+  #switchActivePlayers(): void {
     let temp = this.activePlayer;
     this.activePlayer = this.opponent;
     this.opponent = temp;
+  }
+
+  /** Define if a Player is AI. */
+  #isAI(player: Player | AI): player is AI {
+    return (player as AI).type === "computer";
   }
 }

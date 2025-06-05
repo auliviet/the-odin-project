@@ -1,27 +1,25 @@
 import Player from "./player";
+import { Board, Coordinates } from "./gameboard";
 
 /** Class representing an AI player for the game. */
 export default class AI extends Player {
-  #difficulty;
-  #GAMEBOARDSIZE;
-  #successfulPlays;
-  #opponentBoard;
+  #difficulty: number = 0;
+  #GAMEBOARDSIZE: number;
+  #successfulPlays: Coordinates[];
+  #opponentBoard: Board;
 
   /** Create an AI player. Initializes the AI player with a default difficulty level and sets up the gameboard size and played cells.
    */
   constructor() {
     super();
-
-    this.difficulty = 0;
     this.#GAMEBOARDSIZE = this.gameboard.board.length;
     this.#successfulPlays = [];
     this.#opponentBoard = [];
   }
 
   /** Set the difficulty level of the AI player. Validates the input index to ensure it is within the acceptable range (0 or 1).
-   * @param {number} index - The index of the difficulty level (0 for easy, 1 for hard).
    */
-  set difficulty(index) {
+  set difficulty(index: number) {
     if (index < 0) {
       this.#difficulty = 0;
     } else if (index > 1) {
@@ -32,17 +30,14 @@ export default class AI extends Player {
   }
 
   /** Get the current difficulty level of the AI player.
-   * @returns {number} The current difficulty level (0 or 1).
    */
-  get difficulty() {
+  get difficulty(): number {
     return this.#difficulty;
   }
 
   /** Execute a play by the AI player. This method randomly selects a cell to attack on the opponent's gameboard.
-   * @param {Array} board A 2D array representing the gameboard of the opponent.
-   * @returns {Array} An array containing the column and row of the selected cell.
    */
-  play(board) {
+  play(board: Board): Coordinates {
     this.#opponentBoard = board;
 
     return this.#difficulty === 0
@@ -51,17 +46,15 @@ export default class AI extends Player {
   }
 
   /** Add a successful play to the list of successful plays.
-   * @param {Array} cell - An array containing the column and row of the successful play.
    */
-  addSuccessfulPlay(cell) {
+  addSuccessfulPlay(cell: Coordinates) {
     this.#successfulPlays.push(cell);
   }
 
   /** Generate a random cell to attack on the gameboard. If the generated cell has already been played, it recursively calls itself to find a new cell.
-   * @returns {Array} An array containing the column and row of the randomly selected cell.
    */
-  #getRandomCell() {
-    let cell = [];
+  #getRandomCell(): Coordinates {
+    let cell: Coordinates = [];
 
     const column = this.#getRandomInt(this.#GAMEBOARDSIZE);
     cell.push(column);
@@ -76,14 +69,13 @@ export default class AI extends Player {
   }
 
   /** Get a surrounding cell based on the last successful play. If no valid surrounding cell is found, it recursively calls itself.
-   * @returns {Array} An array containing the column and row of the selected surrounding cell.
    */
-  #getSurroundingCell() {
+  #getSurroundingCell(): Coordinates {
     if (this.#successfulPlays.length === 0) {
       return this.#getRandomCell();
     }
 
-    let [column, row] = this.#successfulPlays.at(-1);
+    let [column, row] = this.#successfulPlays[this.#successfulPlays.length - 1];
 
     for (let i = column - 1; i <= column + 1; i++) {
       for (let j = row - 1; j <= row + 1; j++) {
@@ -101,20 +93,16 @@ export default class AI extends Player {
   }
 
   /** Check if a specific cell has already been played.
-   * @param {Array} cell - An array containing the column and row of the cell to check.
-   * @returns {boolean} True if the cell has already been played, false otherwise.
    */
-  #isAlreadyPlayed(cell) {
+  #isAlreadyPlayed(cell: Coordinates): boolean {
     const [column, row] = cell;
 
     return this.#opponentBoard[column][row].isPlayed;
   }
 
   /** Check if a cell is within the bounds of the gameboard.
-   * @param {Array} cell - An array containing the column and row of the cell to check.
-   * @returns {boolean} True if the cell is on the board, false otherwise.
    */
-  #isOnBoard(cell) {
+  #isOnBoard(cell: Coordinates): Boolean {
     const [column, row] = cell;
 
     return (
@@ -126,10 +114,8 @@ export default class AI extends Player {
   }
 
   /** Generate a random integer between 0 and the specified maximum.
-   * @param {number} max - The upper limit (exclusive) for the random integer.
-   * @returns {number} A random integer between 0 and max.
    */
-  #getRandomInt(max) {
+  #getRandomInt(max: number): number {
     return Math.floor(Math.random() * max);
   }
 }

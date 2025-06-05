@@ -1,23 +1,26 @@
 import Ship from "./ship";
 
+type Direction = "horizontal" | "vertical";
+export type Board = Cell[][];
+export type Coordinates = number[];
+
 /** Class representing a gameboard containing ships. */
 export class Gameboard {
   #SIZE = 10;
   #DIRECTIONS = ["horizontal", "vertical"];
+  board: Board;
 
-  /** Create a gameboard and initialize the ships.
-   * @param {Array} listOfShip - An array of Ship objects (not used in the constructor).
-   */
-  constructor() {
-    this.board = this.#initialiseBoard();
-    this.ships = [
+  constructor(
+    public ships = [
       new Ship("Carrier", 5),
       new Ship("Battleship", 4),
       new Ship("Cruiser", 3),
       new Ship("Submarine", 3),
       new Ship("Destroyer", 2),
       new Ship("Destroyer", 2),
-    ];
+    ],
+  ) {
+    this.board = this.#initialiseBoard();
   }
 
   /** Place a ship at specific coordinates on the board.
@@ -26,8 +29,12 @@ export class Gameboard {
    * @param {Array} startPoint column and row where the ship starts
    * @returns {boolean} True if the placement is successful, false otherwise
    */
-  placeShip(ship, direction, startPoint) {
-    const cells = this.#isValidPlacement(ship, direction, startPoint);
+  placeShip(
+    ship: Ship,
+    direction: Direction,
+    startPoint: Coordinates,
+  ): boolean {
+    const cells = this.#validCoordinates(ship, direction, startPoint);
     if (cells) {
       cells.forEach(([column, row]) => {
         this.board[column][row].placedShip = ship;
@@ -39,9 +46,8 @@ export class Gameboard {
   }
 
   /** Randomly place a ship on the board.
-   * @returns {boolean} true if the ship was successfuly placed, false otherwise
    */
-  placeShipRandomly(ship) {
+  placeShipRandomly(ship: Ship): boolean {
     const direction = this.#getRandomDirection();
     const startPoint = [this.#getRandomInt(10), this.#getRandomInt(10)];
 
@@ -50,7 +56,7 @@ export class Gameboard {
 
   /** Randomly place all ships on the board. This method attempts to place each ship in the `ships` array randomly until all ships are placed.
    */
-  placeAllShipsRandomly() {
+  placeAllShipsRandomly(): void {
     this.ships.forEach((ship) => {
       let placedShip = false;
       while (!placedShip) {
@@ -63,21 +69,22 @@ export class Gameboard {
   }
 
   /** Receive an attack at specific coordinates on the board.
-   * @param {Array} cell column and row to attack
-   * @returns {boolean} True if the attack is valid, flase otherwise
    */
-  receiveAttack(cell) {
+  receiveAttack(cell: Coordinates): boolean {
     if (!this.#isValidCoordinates(cell) || !this.#isCellNotPlayed(cell)) {
       throw new Error(`Invalid attack at [${cell}]`);
     }
 
     let [column, row] = cell;
     this.board[column][row].isPlayed = true;
-    if (this.board[column][row].placedShip) {
-      this.board[column][row].placedShip.hit();
+
+    const placedShip = this.board[column][row].placedShip;
+
+    if (placedShip) {
+      placedShip.hit();
       this.#markDiagonalCellsAsPlayed([column, row]);
 
-      if (this.board[column][row].placedShip.isSunk()) {
+      if (placedShip.isSunk()) {
         this.#markCellsSurroundingShipAsPlayed([column, row]);
       }
       return true;
@@ -87,20 +94,18 @@ export class Gameboard {
   }
 
   /** Verify if all ships are sunk.
-   * @returns {boolean} True if all ships are sunk, false if at lease one ship is not sunk
    */
-  areAllShipsSunk() {
+  areAllShipsSunk(): boolean {
     return this.ships.every((ship) => ship.isSunk());
   }
 
   /** Create an empty gameboard.
-   * @returns {Array} A 2D array of specified length and height, with each element being an empty Cell.
    */
-  #initialiseBoard() {
-    let board = [];
+  #initialiseBoard(): Board {
+    let board: Board = [];
 
     for (let column = 0; column < this.#SIZE; column++) {
-      let newColumn = [];
+      let newColumn: Cell[] = [];
 
       for (let row = 0; row < this.#SIZE; row++) {
         newColumn.push(new Cell());
@@ -113,21 +118,25 @@ export class Gameboard {
   }
 
   /** Verify if a ship can be placed at a specific start point. A ship must be placed on the board, on empty cells, and it must be surrounded by empty cells.
-   * @param {Object} ship - An object of class Ship.
-   * @param {string} direction - Direction of the ship, either "horizontal" or "vertical".
-   * @param {Array} startPoint - Column and row where the ship starts.
-   * @returns {Array} List of cells the ship will occupy if placement is valid.
    */
-  #isValidPlacement(ship, direction, startPoint) {
+  #validCoordinates(
+    ship: Ship,
+    direction: Direction,
+    startPoint: Coordinates,
+  ): Coordinates[] {
     try {
       this.#isValidPlacementParamaters(ship, direction, startPoint);
     } catch (error) {
-      throw new Error(error);
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error("An unknown error occurred");
+      }
     }
 
     const [column, row] = startPoint;
     const length = ship.length;
-    const cells = this.#getCells(length, direction, [column, row]);
+    const cells = this.#getCoordinates(length, direction, [column, row]);
 
     // Validate if each cell the ship should occupy meet the requirements
     for (const cell of cells) {
@@ -144,10 +153,8 @@ export class Gameboard {
   }
 
   /** Verify if a set of coordinates is valid. A set of coordinates must be an array of two values, each within the bounds of the board.
-   * @param {Array} cell column and row of the coordinates to validate
-   * @returns {boolean} true if the input is valid, false otherwise
    */
-  #isValidCoordinates(cell) {
+  #isValidCoordinates(cell: Coordinates): boolean {
     if (
       !Array.isArray(cell) ||
       cell.length !== 2 ||
@@ -160,12 +167,12 @@ export class Gameboard {
   }
 
   /** Verify the parameters to place a ship. Validates that the ship is an instance of Ship, the direction is valid, and the start point is valid.
-   * @param {Object} ship - An object of class Ship.
-   * @param {string} direction - Direction of the ship, either "horizontal" or "vertical".
-   * @param {Array} startPoint - Column and row where the ship starts.
-   * @returns {boolean} True if the parameters are valid, throws an error otherwise.
    */
-  #isValidPlacementParamaters(ship, direction, startPoint) {
+  #isValidPlacementParamaters(
+    ship: Ship,
+    direction: Direction,
+    startPoint: Coordinates,
+  ): boolean {
     if (!(ship instanceof Ship)) {
       throw new Error("Invalid placement. Ship object expected");
     }
@@ -182,34 +189,26 @@ export class Gameboard {
   }
 
   /** Validate if a specific set of coordinates is on the board.
-   * @param {Array} cell expressed as [column, row]
-   * @returns {boolean} true if the coordinates are on the board, false otherwise
    */
-  #isCellOnBoard([column, row]) {
+  #isCellOnBoard([column, row]: Coordinates): boolean {
     return column >= 0 && column < this.#SIZE && row >= 0 && row < this.#SIZE;
   }
 
   /** Validate if a ship is not placed on a specific set of coordinates.
-   * @param {Array} cell expressed as [column, row]
-   * @returns {boolean} true if the cell is empty, false otherwise
    */
-  #isCellEmpty([column, row]) {
+  #isCellEmpty([column, row]: Coordinates): boolean {
     return this.board[column][row].placedShip === null;
   }
 
   /** Validate if the cell has already been played.
-   * @param {Array} cell expressed as [column, row]
-   * @returns {boolean} true if the cell has not been played, false otherwise
    */
-  #isCellNotPlayed([column, row]) {
+  #isCellNotPlayed([column, row]: Coordinates): boolean {
     return !this.board[column][row].isPlayed;
   }
 
   /** Validate if a ship is surrounded by empty cells.
-   * @param {Array} cell expressed as [column, row]
-   * @returns {boolean} true if the cell is surrounded by empty cells, false otherwise
    */
-  #areAdjacentCellsEmpty([column, row]) {
+  #areAdjacentCellsEmpty([column, row]: Coordinates): boolean {
     for (
       let adjacentColumn = column - 1;
       adjacentColumn <= column + 1;
@@ -232,48 +231,43 @@ export class Gameboard {
   }
 
   /** Get the list of coordinates occupied by a ship. Generates the coordinates based on the ship's length and direction.
-   * @param {Number} length - The number of cells occupied by a ship.
-   * @param {string} direction - The direction of the ship, either "horizontal" or "vertical".
-   * @param {Array} startPoint - The column and row where the ship starts.
-   * @returns {Array} The list of cells occupied by the ship.
    */
-  #getCells(length, direction, startPoint) {
-    let listOfCells = [];
+  #getCoordinates(
+    length: number,
+    direction: Direction,
+    startPoint: Coordinates,
+  ): Coordinates[] {
+    let listOfCoordinates: Coordinates[] = [];
     let [column, row] = startPoint;
 
     if (direction === "horizontal") {
       for (let i = column; i < column + length; i++) {
-        listOfCells.push([i, row]);
+        listOfCoordinates.push([i, row]);
       }
     } else if (direction === "vertical") {
       for (let j = row; j < row + length; j++) {
-        listOfCells.push([column, j]);
+        listOfCoordinates.push([column, j]);
       }
     }
 
-    return listOfCells;
+    return listOfCoordinates;
   }
 
   /** Return a random number between 0 and max.
-   * @param {Number} max the highest number that can be randomly chosen
-   * @returns {Number} random number between 0 and max
    */
-  #getRandomInt(max) {
+  #getRandomInt(max: number): number {
     return Math.floor(Math.random() * max);
   }
 
   /** Return a random direction.
-   * @returns {string} "horizontal" or "vertical" randomly chosen
    */
-  #getRandomDirection() {
-    return this.#DIRECTIONS[this.#getRandomInt(2)];
+  #getRandomDirection(): Direction {
+    return this.#getRandomInt(2) === 0 ? "horizontal" : "vertical";
   }
 
   /** Marks the adjacent cells of a given cell as played. This function checks the surrounding cells (including diagonals) of the specified cell and marks them as played if they are on the board.
-   * @param {Array} cell expressed as [column, row]
-   * @returns {void}
    */
-  #markDiagonalCellsAsPlayed([column, row]) {
+  #markDiagonalCellsAsPlayed([column, row]: Coordinates): void {
     for (let i = column - 1; i < column + 2; i += 2) {
       for (let j = row - 1; j < row + 2; j += 2) {
         if (this.#isCellOnBoard([i, j])) {
@@ -284,11 +278,11 @@ export class Gameboard {
   }
 
   /** Marks the cells surrounding a ship as played. This method recursively checks the surrounding cells of the specified cell and marks them as played if they contain a ship. It also ensures that cells are not revisited by using a Set to track visited cells.
-   * @param {Array<number>} cell - An array containing the column and row of the cell to check.
-   * @param {Set<string>} [visitedCells=new Set()] - A Set to keep track of cells that have already been processed.
-   * @returns {void} This method does not return a value.
    */
-  #markCellsSurroundingShipAsPlayed([column, row], visitedCells = new Set()) {
+  #markCellsSurroundingShipAsPlayed(
+    [column, row]: Coordinates,
+    visitedCells = new Set(),
+  ): void {
     const cell = `${column},${row}`;
     if (visitedCells.has(cell)) {
       return;
@@ -313,8 +307,8 @@ export class Gameboard {
 /** Class representing the cells used on the board. */
 export class Cell {
   /** Create an empty cell */
-  constructor() {
-    this.placedShip = null;
-    this.isPlayed = false;
-  }
+  constructor(
+    public placedShip: Ship | null = null,
+    public isPlayed = false,
+  ) {}
 }

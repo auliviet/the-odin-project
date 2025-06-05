@@ -26,11 +26,11 @@ beforeEach(() => {
     };
   });
 
-  AI.mockImplementation((difficulty) => {
+  AI.mockImplementation(() => {
     return {
       name: "Computer",
       type: "computer",
-      difficulty,
+      difficulty: 0,
       gameboard: {
         board: [0, 0],
         placeAllShipsRandomly: jest.fn(),
