@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auliviet's homepage</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="grid">
+      <h1>
+        G'day,<br />
+        my name is <strong>Auliviet</strong>.
+      </h1>
+
+      <div class="header__portrait">
+        <picture>
+          <div class="header__portrait-oval"></div>
+          <source
+            media="(min-width: 1024px)"
+            srcset="./assets/portrait-large.png"
+          />
+          <img
+            src="./assets/portrait.png"
+            alt="A pixelated representation of Auliviet"
+          />
+        </picture>
+      </div>
+
+      <div class="header__intro">
+        <p>I am a Digital Producer in Sydney, Australia.</p>
+        <p>In my spare time, I enjoy making stuff.</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="grid">
+        <h2>Projects</h2>
+        <ul class="cards">
+          <li class="card">
+            <div class="card__image" style="background-color: #104760">
+              <img src="./assets/projects/Battleship-Hover.svg" alt="" />
+            </div>
+            <div class="card__content">
+              <h3>Battle/ship</h3>
+              <p>
+                A simple game of battleship using vanilla JavaScript and Jest
+                for unit testing.
+              </p>
+              <div class="card__links">
+                <a
+                  href="https://github.com/auliviet/the-odin-project/blob/main/2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Testing%20JavaScript/Battleship"
+                  class="secondary"
+                  ><img src="./assets/source.svg" />Source</a
+                >
+                <a
+                  href="https://auliviet.github.io/the-odin-project/battleship/"
+                  class="primary"
+                  ><img src="./assets/preview.svg" />Preview</a
+                >
+              </div>
+            </div>
+          </li>
+          <li class="card">
+            <div class="card__image" style="background-color: #f7c664">
+              <img src="./assets/projects/Weather-Hover.svg" alt="" />
+            </div>
+            <div class="card__content">
+              <h3>Umbrella?</h3>
+              <p>Weather forecast powered by the Visualcrossing API.</p>
+              <div class="card__links">
+                <a
+                  href="https://github.com/auliviet/the-odin-project/blob/main/2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Asynchronous%20JavaScript%20and%20APIs/Weather%20App"
+                  class="secondary"
+                  ><img src="./assets/source.svg" />Source</a
+                >
+                <a
+                  href="https://auliviet.github.io/the-odin-project/weather-app/"
+                  class="primary"
+                  ><img src="./assets/preview.svg" />Preview</a
+                >
+              </div>
+            </div>
+          </li>
+          <li class="card">
+            <div class="card__image" style="background-color: #fafafa">
+              <img src="./assets/projects/Toodoo-Hover.svg" alt="" />
+            </div>
+            <div class="card__content">
+              <h3>Toodoo</h3>
+              <p>
+                A simple todo list that organises tasks based on their due date
+                and priority.
+              </p>
+              <div class="card__links">
+                <a
+                  href="https://github.com/auliviet/the-odin-project/blob/main/2.%20Full%20Stack%20JavaScript/2.%20JavaScript/Organizing%20Your%20JavaScript%20Code/Todo%20List"
+                  class="secondary"
+                  ><img src="./assets/source.svg" />Source</a
+                >
+                <a
+                  href="https://auliviet.github.io/the-odin-project/todo-list/"
+                  class="primary"
+                  ><img src="./assets/preview.svg" />Preview</a
+                >
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="grid">
+      <h2>Contact</h2>
+      <p>
+        Don't be shy, come <a href="https://github.com/Auliviet">say hi</a>!
+      </p>
+    </footer>
+  </body>
+</html>
