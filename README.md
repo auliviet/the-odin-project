@@ -7,6 +7,13 @@ List of projects and exercises completed as part of [The Oding Project](https://
 
 ## Selected projects
 
+### Homepage
+
+A responsive landing page to present the projects created as part of The Odin Project curriculum.
+
+- [Source code](2.%20Full%20Stack%20JavaScript/3.%20Advancded%20HTML%20and%20CSS/Responsive%20Design/Homepage)
+- [Preview link](https://auliviet.github.io/the-odin-project/homepage/)
+
 ### BATTLE/SHIP
 
 Simple game of battleship using vanilla JavaScript and Jest for unit testing.
@@ -51,6 +58,7 @@ JavaScript
 Advanced HTML and CSS
 
 - [Animations](2.%20Full%20Stack%20JavaScript/3.%20Advancded%20HTML%20and%20CSS/Animations)
+- [Homepage](https://github.com/auliviet/the-odin-project/tree/main/2.%20Full%20Stack%20JavaScript/3.%20Advancded%20HTML%20and%20CSS/Responsive%20Design/Homepage)
 
 ### Foundations path
 

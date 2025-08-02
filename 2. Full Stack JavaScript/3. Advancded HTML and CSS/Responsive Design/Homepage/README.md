@@ -5,7 +5,7 @@ Exercise as part of the Full-stack JavaScript curriculum on responsive design.
 
 ## Preview link
 
-[Github Pages](#)
+[Github Pages](https://auliviet.github.io/the-odin-project/homepage/)
 
 ## Project Overview
 
