@@ -8,6 +8,7 @@ import type {
 import FormExperiencesList from "./form-experiencesList";
 import FormIntroduction from "./form-introduction";
 import FormPersonalInfo from "./form-personalInfo";
+import classes from "./form.module.css";
 
 // Interfaces
 interface FormSetters {
@@ -29,7 +30,7 @@ interface FormProps {
 
 export default function Form({ data, setStates }: FormProps) {
   return (
-    <form>
+    <form className={classes.form}>
       <FormPersonalInfo
         data={data.personalInfo}
         setState={setStates.setPersonalInfo}

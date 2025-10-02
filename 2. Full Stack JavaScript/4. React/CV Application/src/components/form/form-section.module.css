@@ -1,0 +1,36 @@
+.section {
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border: 5px solid var(--white);
+  background-color: var(--offwhite);
+  filter: drop-shadow(0px 4px 8px hsl(0 0 0 / 10%));
+}
+
+.sectionHeader {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.sectionName {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.buttonsHeader {
+  display: flex;
+  flex-flow: row;
+  gap: 1rem;
+}
+
+.formContent {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+  margin: 1rem auto;
+
+  & > button {
+    margin: auto;
+  }
+}

@@ -1,0 +1,56 @@
+.button {
+  border: none;
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--grey);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--grey);
+    outline-offset: 2px;
+  }
+}
+
+.iconButton {
+  composes: button;
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  background-color: var(--lightgrey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textButton {
+  composes: button;
+  display: flex;
+  flex-flow: row;
+  gap: 1em;
+  align-items: center;
+  padding: 0.5rem 1em;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: bold;
+  color: var(--black);
+  background-color: var(--white);
+  border-radius: 1.5rem;
+  filter: drop-shadow(0 4px 8px hsl(0 0 0 / 10%));
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  background-color: var(--lightgrey);
+}
+
+.textButton:hover .iconWrapper {
+  background-color: var(--grey);
+}

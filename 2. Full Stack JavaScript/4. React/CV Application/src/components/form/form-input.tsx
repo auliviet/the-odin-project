@@ -1,4 +1,5 @@
 import formatLabel from "../../utils/formatLabel";
+import classes from "./form-input.module.css";
 
 type InputType = "text" | "textArea" | "phone" | "email" | "date";
 
@@ -19,16 +20,22 @@ export default function ({ type = "text", name, value, handler }: InputProps) {
   }
 
   return (
-    <label>
-      {formatLabel(name)}:
+    <label className={classes.input}>
+      <span className={classes.inputLabel}>{formatLabel(name)}:</span>
       {type === "textArea" ? (
-        <textarea value={value} name={name} onChange={onChange}></textarea>
+        <textarea
+          value={value}
+          name={name}
+          onChange={onChange}
+          className={classes.inputTextArea}
+        ></textarea>
       ) : (
         <input
           type={type}
           value={value}
           name={name}
           onChange={onChange}
+          className={classes.inputText}
         ></input>
       )}
     </label>
