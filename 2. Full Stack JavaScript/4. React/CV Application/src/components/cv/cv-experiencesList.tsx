@@ -1,5 +1,6 @@
 import type { EducationExperience, WorkExperience } from "../../utils/types";
 import CVExperience from "./cv-experience";
+import classes from "./cv-experiencesList.module.css";
 
 export default function CVExperiencesList({
   data,
@@ -7,7 +8,7 @@ export default function CVExperiencesList({
   data: WorkExperience[] | EducationExperience[];
 }) {
   return (
-    <ul>
+    <ul className={classes.experiencesList}>
       {data.map((experience) => (
         <CVExperience key={experience.id} data={experience}></CVExperience>
       ))}

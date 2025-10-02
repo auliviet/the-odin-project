@@ -87,7 +87,6 @@ export default function FormExperience({
         return (
           <Input
             key={key}
-            type="textArea"
             name={key}
             value={experience[key as keyof typeof data]}
             handler={experienceHandler}

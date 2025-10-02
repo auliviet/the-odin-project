@@ -1,0 +1,18 @@
+.cv {
+  display: flex;
+  flex-flow: column;
+  gap: 4rem;
+  background-color: var(--offwhite);
+  margin-top: 1rem;
+  padding: 1rem;
+  filter: drop-shadow(0px 4px 8px hsl(0 0 0 / 10%));
+  height: fit-content;
+
+  & h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--sans);
+  }
+}

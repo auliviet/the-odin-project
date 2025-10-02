@@ -1,0 +1,39 @@
+.input {
+  display: flex;
+  flex-flow: column;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.inputLabel {
+  margin-left: 1rem;
+}
+
+.inputField {
+  padding: 0.25rem 1rem;
+  margin-top: 0.5rem;
+  color: var(--darkgrey);
+  font-weight: normal;
+  background-color: var(--lightgrey);
+  border-radius: 1rem;
+  border: none;
+
+  &:focus {
+    outline: 2px solid var(--grey);
+    outline-offset: 2px;
+  }
+}
+
+.inputText {
+  composes: inputField;
+  height: 2rem;
+}
+
+.inputTextArea {
+  composes: inputField;
+  height: var(--textAreaHeight);
+  resize: none;
+  min-height: 2rem;
+  height: 9rem;
+}

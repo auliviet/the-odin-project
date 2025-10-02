@@ -1,0 +1,20 @@
+.category {
+  margin-bottom: 1rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.items {
+  padding: 0;
+  list-style: disc inside;
+}
+
+.item {
+  margin: 0.5rem auto;
+
+  &::marker {
+    color: var(--yellow);
+  }
+}

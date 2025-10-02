@@ -4,6 +4,7 @@ import FormInput from "./form-input";
 import FormSection from "./form-section";
 import { WorkItemFactory } from "../../utils/factories";
 import FormButton from "./form-button";
+import classes from "./form-workCategory.module.css";
 
 interface FormWorkCategoryProps {
   data: WorkCategory;
@@ -109,10 +110,10 @@ export default function FormWorkCategory({
         value={categoryName}
         handler={handleCategoryName}
       ></FormInput>
-      <ul>
+      <ul className={classes.categoryList}>
         {data.items.map((item, index) => {
           return (
-            <li key={item.id}>
+            <li key={item.id} className={classes.listItem}>
               <FormInput
                 type="textArea"
                 name={`List item ${index + 1}`}
@@ -130,12 +131,12 @@ export default function FormWorkCategory({
             </li>
           );
         })}
-        <FormButton
-          type="add"
-          text="Add work item"
-          handler={handleAddWorkItem}
-        ></FormButton>
       </ul>
+      <FormButton
+        type="add"
+        text="Add work item"
+        handler={handleAddWorkItem}
+      ></FormButton>
     </FormSection>
   );
 }

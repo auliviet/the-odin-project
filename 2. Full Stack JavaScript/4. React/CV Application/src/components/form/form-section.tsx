@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import FormButton from "./form-button";
+import classes from "./form-section.module.css";
 
 interface FormSectionProps {
   sectionName: string;
@@ -19,16 +20,23 @@ export default function FormSection({
   }
 
   return (
-    <section className="form-section">
-      <h3>{sectionName}</h3>
-      <FormButton
-        type={isVisible ? "minimise" : "expend"}
-        handler={expandAccordion}
-      ></FormButton>
-      {deleteHandler && (
-        <FormButton type="delete" handler={deleteHandler}></FormButton>
-      )}
-      <div style={isVisible ? { display: "inherit" } : { display: "none" }}>
+    <section className={classes.section}>
+      <header className={classes.sectionHeader}>
+        <h3 className={classes.sectionName}>{sectionName}</h3>
+        <div className={classes.buttonsHeader}>
+          <FormButton
+            type={isVisible ? "minimise" : "expend"}
+            handler={expandAccordion}
+          ></FormButton>
+          {deleteHandler && (
+            <FormButton type="delete" handler={deleteHandler}></FormButton>
+          )}
+        </div>
+      </header>
+      <div
+        className={classes.formContent}
+        style={isVisible ? { display: "flex" } : { display: "none" }}
+      >
         {children}
       </div>
     </section>

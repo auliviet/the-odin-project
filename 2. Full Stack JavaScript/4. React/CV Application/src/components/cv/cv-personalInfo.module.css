@@ -1,0 +1,21 @@
+.title {
+  & h1 {
+    text-transform: uppercase;
+  }
+  & h2 {
+    color: var(--red);
+  }
+}
+
+.contact {
+  text-align: right;
+
+  & a {
+    color: var(--blue);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: revert;
+    }
+  }
+}
