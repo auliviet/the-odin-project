@@ -16,7 +16,7 @@ export const defaultPersonalInfo: PersonalInfo = {
 
 export const defaultIntroduction: Introduction = {
   introduction:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie eleifend quam ac tristique. Nam sit amet vehicula libero. Suspendisse sed viverra nisl. Nulla pellentesque purus a sagittis consequat. Duis erat lectus, venenatis in blandit interdum, venenatis non tellus. Mauris sit amet leo convallis, sagittis sapien ac, rhoncus enim. Donec vulputate neque ante, in fermentum turpis tristique vel. Vestibulum sagittis ligula non ex mollis, eu rhoncus urna convallis. Nulla dapibus at ipsum vitae venenatis.",
+    "Stoic philosopher-king who ruled the Roman Empire with wisdom, discipline, and a relentless commitment to duty. Adept at leading vast armies, managing complex provincial administrations, and authoring timeless meditations on virtue and leadership.",
 };
 
 export const defaultWorkExperiences: WorkExperience[] = [
@@ -28,33 +28,33 @@ export const defaultWorkExperiences: WorkExperience[] = [
     startDate: "March 161",
     endDate: "March 180",
     introduction:
-      "Because a thing seems difficult for you, do not think it impossible for anyone to accomplish.",
+      "Guided the empire through wars, plague, and political intrigue while embodying Stoic principles. Championed legal reforms, infrastructure projects, and cultural patronage.",
     categories: [
       {
         id: crypto.randomUUID(),
-        categoryName: "Conquests",
+        categoryName: "Military Campaigns",
         items: [
           {
             id: crypto.randomUUID(),
-            label: "North bank of the Euphrates.",
+            label: "Marcomannic Wars - Secured the Danube frontier.",
           },
           {
             id: crypto.randomUUID(),
-            label: "Anthemusia, a town southwest of Edessa.",
+            label: "Parthian Expedition - Stabilised eastern borders.",
           },
         ],
       },
       {
         id: crypto.randomUUID(),
-        categoryName: "Philosophy",
+        categoryName: "Administrative Reforms",
         items: [
           {
             id: crypto.randomUUID(),
-            label: "Meditations",
+            label: "Codified imperial edicts into a unified legal corpus.",
           },
           {
             id: crypto.randomUUID(),
-            label: "To Himself.",
+            label: "Reorganized provincial tax collection to curb corruption.",
           },
         ],
       },
@@ -62,39 +62,40 @@ export const defaultWorkExperiences: WorkExperience[] = [
   },
   {
     id: crypto.randomUUID(),
-    jobTitle: "Imperator",
+    jobTitle: "Praetorian Prefect",
     location: "Rome",
     company: "Roman empire",
-    startDate: "March 181",
-    endDate: "March 190",
+    startDate: "March 151",
+    endDate: "February 161",
     introduction:
-      "Because a thing seems difficult for you, do not think it impossible for anyone to accomplish.",
+      "Served as senior aide to Emperor Antoninus Pius, overseeing the Praetorian Guard and acting as chief liaison between the Senate and the imperial court.",
     categories: [
       {
         id: crypto.randomUUID(),
-        categoryName: "Conquests",
+        categoryName: "Leadership",
         items: [
           {
             id: crypto.randomUUID(),
-            label: "North bank of the Euphrates.",
+            label: "Managed a force of ~10,000 elite soldiers.",
           },
           {
             id: crypto.randomUUID(),
-            label: "Anthemusia, a town southwest of Edessa.",
+            label:
+              "Implemented rigorous training regimens based on Stoic discipline.",
           },
         ],
       },
       {
         id: crypto.randomUUID(),
-        categoryName: "Philosophy",
+        categoryName: "Crisis Management",
         items: [
           {
             id: crypto.randomUUID(),
-            label: "Meditations",
+            label: "Coordinated relief during the Antonine Plague (165 CE).",
           },
           {
             id: crypto.randomUUID(),
-            label: "To Himself.",
+            label: "Negotiated peace treaties with Germanic tribes.",
           },
         ],
       },
@@ -105,12 +106,12 @@ export const defaultWorkExperiences: WorkExperience[] = [
 export const defaultEducationExperiences: EducationExperience[] = [
   {
     id: crypto.randomUUID(),
-    degree: "Basic rhetoric",
+    degree: "Classical Rhetoric",
     location: "Rome",
-    school: "Agora",
-    startDate: "March 161",
-    endDate: "Dcember 161",
+    school: "Ludus Magnus",
+    startDate: "March 121",
+    endDate: "December 124",
     introduction:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie eleifend quam ac tristique. Nam sit amet vehicula libero. Suspendisse sed viverra nisl.",
+      "Studied under the eminent rhetorician Fronto and the Stoic philosopher Junius Rusticus. Developed mastery of Latin oratory, Greek philosophy, and ethical reasoning.",
   },
 ];
