@@ -29,6 +29,17 @@
   flex-flow: column;
   gap: 1rem;
   margin: 1rem auto;
+  transition: max-height var(--slowtransition) ease-out,
+    margin var(--slowtransition) ease, opacity var(--slowtransition) ease;
+  max-height: fit-content;
+  opacity: 1;
+
+  &.collapsed {
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    opacity: 0;
+  }
 
   & > button {
     margin: auto;

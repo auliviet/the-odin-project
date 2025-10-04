@@ -1,15 +1,20 @@
 .button {
   border: none;
   border-radius: 50%;
+  transition: background-color var(--quicktransition),
+    filter var(--quicktransition), transform var(--quicktransition);
 
   &:hover {
     cursor: pointer;
     background-color: var(--grey);
+    filter: none;
+    transform: scale(0.95);
   }
 
   &:focus-visible {
     outline: 2px solid var(--grey);
     outline-offset: 2px;
+    filter: none;
   }
 }
 
@@ -51,6 +56,6 @@
   background-color: var(--lightgrey);
 }
 
-.textButton:hover .iconWrapper {
+/* .textButton:hover .iconWrapper {
   background-color: var(--grey);
-}
+} */

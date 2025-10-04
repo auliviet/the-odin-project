@@ -34,8 +34,7 @@ export default function FormSection({
         </div>
       </header>
       <div
-        className={classes.formContent}
-        style={isVisible ? { display: "flex" } : { display: "none" }}
+        className={`${classes.formContent} ${!isVisible && classes.collapsed}`}
       >
         {children}
       </div>

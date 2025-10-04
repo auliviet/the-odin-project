@@ -94,6 +94,13 @@ p {
   line-height: 1.5;
 }
 
+/* TRANSITIONS */
+
+:root {
+  --slowtransition: 400ms;
+  --quicktransition: 200ms;
+}
+
 /* GLOBAL */
 #root {
   display: flex;
