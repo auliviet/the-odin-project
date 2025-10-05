@@ -11,7 +11,10 @@ export default function FormButton({ type, text, handler }: FormButtonProps) {
     return (
       <button className={classes.textButton} onClick={handler}>
         <div className={classes.iconWrapper}>
-          <img src={`/assets/${type}.svg`} alt={type} />
+          <img
+            src={`${import.meta.env.BASE_URL}/assets/${type}.svg`}
+            alt={type}
+          />
         </div>
         {text}
       </button>
@@ -19,7 +22,10 @@ export default function FormButton({ type, text, handler }: FormButtonProps) {
   } else {
     return (
       <button className={classes.iconButton} onClick={handler}>
-        <img src={`/assets/${type}.svg`} alt={type} />
+        <img
+          src={`${import.meta.env.BASE_URL}/assets/${type}.svg`}
+          alt={type}
+        />
       </button>
     );
   }
