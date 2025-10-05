@@ -1,69 +1,37 @@
-# React + TypeScript + Vite
+# CV APPLICATION
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[The Oding Project](https://www.theodinproject.com): CV App.
+Exercise as part of the Full-stack JavaScript curriculum on React.
 
-Currently, two official plugins are available:
+## Preview link
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Github Pages](https://auliviet.github.io/the-odin-project/cv-app/)
 
-## Expanding the ESLint configuration
+## Project Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+CV Application allows users to create a resume by filling out a form. It is built using React and Typescript with Vite for build. The goal of the exercise is to create React components and manage changes of data using React states and props.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+This project offers the below functionalities:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- Dynamically updates a CV preview based on form input.
+- Allow users to add/remove Work Experiences and Degrees.
+- Use [Vite](https://vite.dev/) to bundle the source files and build the project.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Instructions
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The full set of instructions can be found at [The Odin Project ](https://www.theodinproject.com/lessons/node-path-react-new-cv-application).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Create a new React project.
+- Structure your application into components:
+  - A section to add general information
+  - A section to add your educational experience
+  - A section to add practical experience
+- Use React states and props to update the data
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Future enhancements
+
+- Export CV to PDF.
+- Re-order sections of the resume.
+- Use date inputs for the dates of the resume and calculate duration automatically.
+- Allow user to select font and colors.
+- Mobile layout.
