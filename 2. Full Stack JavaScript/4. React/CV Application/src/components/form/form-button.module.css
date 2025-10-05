@@ -2,13 +2,13 @@
   border: none;
   border-radius: 50%;
   transition: background-color var(--quicktransition),
-    filter var(--quicktransition), transform var(--quicktransition);
+    box-shadow var(--quicktransition), transform var(--quicktransition);
 
   &:hover {
     cursor: pointer;
     background-color: var(--grey);
-    filter: none;
-    transform: scale(0.95);
+    box-shadow: none;
+    transform: scale(0.98);
   }
 
   &:focus-visible {
@@ -42,7 +42,7 @@
   color: var(--black);
   background-color: var(--white);
   border-radius: 1.5rem;
-  filter: drop-shadow(0 4px 8px hsl(0 0 0 / 10%));
+  box-shadow: 0 4px 8px hsl(0 0 0 / 10%);
 }
 
 .iconWrapper {
