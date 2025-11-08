@@ -8,7 +8,7 @@ import Welcome from "../Welcome";
 
 export default function App() {
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [gameStatus, setGameStatus] = useState<Status>("start");
+  const [status, setStatus] = useState<Status>("start");
 
   useEffect(() => {
     // Pre-load the character on the start screen
@@ -30,13 +30,9 @@ export default function App() {
 
   return (
     <>
-      {gameStatus === "start" && <Welcome setGameStatus={setGameStatus} />}
-      {gameStatus !== "start" && (
-        <Game
-          characters={characters}
-          gameStatus={gameStatus}
-          setGameStatus={setGameStatus}
-        />
+      {status === "start" && <Welcome setStatus={setStatus} />}
+      {status !== "start" && (
+        <Game characters={characters} status={status} setStatus={setStatus} />
       )}
     </>
   );

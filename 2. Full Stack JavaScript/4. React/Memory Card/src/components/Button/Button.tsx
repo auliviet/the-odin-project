@@ -1,3 +1,5 @@
+import classes from "./Button.module.css";
+
 export default function Button({
   onClick,
   children,
@@ -5,5 +7,9 @@ export default function Button({
   onClick: React.EventHandler<any>;
   children: React.ReactNode;
 }) {
-  return <button onClick={onClick}>{children}</button>;
+  return (
+    <button className={classes.button} onClick={onClick}>
+      {children}
+    </button>
+  );
 }

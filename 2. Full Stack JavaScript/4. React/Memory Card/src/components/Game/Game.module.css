@@ -1,0 +1,18 @@
+.game {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  & .scoreSection {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+
+    & .score {
+      display: inline-block;
+      width: 2rem;
+      font-family: var(--title);
+      color: var(--success);
+    }
+  }
+}

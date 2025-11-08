@@ -1,0 +1,20 @@
+.gridWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;
+
+  & .cardsGrid {
+    width: 100cqmin;
+    height: 100cqmin;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 4px;
+
+    @media (min-width: 768px) {
+      gap: 8px;
+    }
+  }
+}

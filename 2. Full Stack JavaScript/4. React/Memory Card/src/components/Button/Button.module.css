@@ -1,0 +1,23 @@
+.button {
+  padding: 0.5rem 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 2rem;
+  text-transform: uppercase;
+  background-color: var(--dark-light);
+  color: var(--dark);
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: box-shadow var(--medium), outline var(--quick);
+
+  &:hover {
+    box-shadow: inset 0 0 0 4px var(--dark-medium);
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 4px var(--dark-medium);
+    outline: 2px solid var(--error);
+    outline-offset: 4px;
+  }
+}

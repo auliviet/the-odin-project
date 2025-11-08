@@ -1,0 +1,75 @@
+.card {
+  padding: 0;
+  max-height: 100%;
+  aspect-ratio: 1;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  perspective: 2000px;
+
+  /* Round the corner of each card in the corner of the grid */
+  &:nth-of-type(1) .cardWrapper,
+  &:nth-of-type(1) .cardWrapper img {
+    border-top-left-radius: 0.5rem;
+  }
+
+  &:nth-of-type(4) .cardWrapper,
+  &:nth-of-type(4) .cardWrapper img {
+    border-top-right-radius: 0.5rem;
+  }
+  &:nth-of-type(13) .cardWrapper,
+  &:nth-of-type(13) .cardWrapper img {
+    border-bottom-left-radius: 0.5rem;
+  }
+  &:nth-of-type(16) .cardWrapper,
+  &:nth-of-type(16) .cardWrapper img {
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  .cardWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--dark-medium);
+    animation: flipping var(--duration);
+    transform-style: preserve-3d;
+    transition: border-color var(--quick);
+
+    @media (min-width: 768px) {
+      border: 4px solid var(--dark-medium);
+    }
+
+    &:hover,
+    &:focus-within {
+      border-color: var(--error);
+    }
+  }
+
+  /* Back of the card style */
+  & .cardFront,
+  & .cardBack {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  & .cardBack {
+    background-color: var(--dark-medium);
+    outline: 8px solid var(--dark-light);
+    outline-offset: -8px;
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes flipping {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}

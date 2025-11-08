@@ -1,0 +1,57 @@
+.bannerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  animation: slideIn var(--slow);
+
+  & .banner {
+    text-align: center;
+
+    & h2 {
+      font-size: 3rem;
+      font-family: var(--title);
+      margin-bottom: 3rem;
+
+      &.won {
+        color: var(--success);
+      }
+
+      &.lost {
+        color: var(--error);
+      }
+    }
+
+    p {
+      font-size: 1.5rem;
+      line-height: 1;
+
+      &.maxScore {
+        margin-top: 1.5rem;
+        font-size: 2rem;
+        color: var(--success);
+      }
+
+      & .score {
+        display: inline-block;
+        width: 2rem;
+        font-family: var(--title);
+      }
+    }
+  }
+
+  & button {
+    margin-top: 3rem;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}
