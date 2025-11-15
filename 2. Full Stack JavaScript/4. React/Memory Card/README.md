@@ -1,73 +1,28 @@
-# React + TypeScript + Vite
+# THE CITADEL
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[The Oding Project](https://www.theodinproject.com): Memory Card.
+Exercise as part of the Full-stack JavaScript curriculum on React.
 
-Currently, two official plugins are available:
+## Preview link
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Github Pages](https://auliviet.github.io/the-odin-project/memory-card/)
 
-## React Compiler
+## Project Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The Cital is a game of Rick. Select each Rick only once, not twice. It is built using React and Typescript with Vite for build. The goal of the exercise is to create React components and manage asynchronous code with React Effects.
 
-## Expanding the ESLint configuration
+This project offers the below functionalities:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Get the images and content via an API.
+- Use sound effects and CSS animations.
+- Use [Vite](https://vite.dev/) to bundle the source files and build the project.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instructions
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The full set of instructions can be found at [The Odin Project ](https://www.theodinproject.com/lessons/node-path-react-new-memory-card).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Create a new React project.
+- Structure your application into components:
+  - Your application should include a scoreboard, which counts the current score, and a “Best Score”.
+  - There should be a function that displays the cards in a random order.
+- Fetch assets via an API.
