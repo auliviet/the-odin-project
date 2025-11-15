@@ -4,6 +4,7 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/the-odin-project/memory-card/",
   plugins: [react()],
   resolve: {
     alias: {
