@@ -7,6 +7,13 @@ List of projects and exercises completed as part of [The Oding Project](https://
 
 ## Selected projects
 
+### The Citadel
+
+A memory game built using React and Typescript.
+
+- [Source code](2.%20Full%20Stack%20JavaScript/4.%20React/Memory%20Card)
+- [Preview link](https://auliviet.github.io/the-odin-project/memory-card/)
+
 ### Homepage
 
 A responsive landing page to present the projects created as part of The Odin Project curriculum.
@@ -42,6 +49,7 @@ Toodoo is a simple todo list that organise tasks based on their due date and pri
 React
 
 - [CV App](2.%20Full%20Stack%20JavaScript/4.%20React/CV%20Application)
+- [Memory Card](2.%20Full%20Stack%20JavaScript/4.%20React/Memory%20Card)
 
 Advanced HTML and CSS
 
