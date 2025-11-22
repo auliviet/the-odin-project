@@ -14,13 +14,6 @@ A memory game built using React and Typescript.
 - [Source code](2.%20Full%20Stack%20JavaScript/4.%20React/Memory%20Card)
 - [Preview link](https://auliviet.github.io/the-odin-project/memory-card/)
 
-### Homepage
-
-A responsive landing page to present the projects created as part of The Odin Project curriculum.
-
-- [Source code](2.%20Full%20Stack%20JavaScript/3.%20Advancded%20HTML%20and%20CSS/Responsive%20Design/Homepage)
-- [Preview link](https://auliviet.github.io/the-odin-project/homepage/)
-
 ### BATTLE/SHIP
 
 Simple game of battleship using vanilla JavaScript and Jest for unit testing.
@@ -50,6 +43,7 @@ React
 
 - [CV App](2.%20Full%20Stack%20JavaScript/4.%20React/CV%20Application)
 - [Memory Card](2.%20Full%20Stack%20JavaScript/4.%20React/Memory%20Card)
+- [Class-based Components](2.%20Full%20Stack%20JavaScript/4.%20React/Class%20Based%20Components)
 
 Advanced HTML and CSS
 
