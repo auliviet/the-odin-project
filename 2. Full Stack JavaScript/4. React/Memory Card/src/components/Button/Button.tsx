@@ -4,7 +4,7 @@ export default function Button({
   onClick,
   children,
 }: {
-  onClick: React.EventHandler<any>;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
 }) {
   return (

@@ -12,7 +12,7 @@ export default function EndGame({
   score: number;
   maxScore: number;
   status: Status;
-  handleRestart: React.EventHandler<any>;
+  handleRestart: React.MouseEventHandler<HTMLButtonElement>;
 }) {
   return (
     <div className={classes.bannerWrapper}>

@@ -8,7 +8,7 @@ export default function GameGrid({
   handleSelection,
 }: {
   characters: Character[];
-  handleSelection: Function;
+  handleSelection: (selectedID: number) => void;
 }) {
   return (
     <section className={classes.gridWrapper}>

@@ -21,7 +21,7 @@ export default function Welcome({
         <Button
           onClick={() => {
             setStatus("playing");
-            playSound("start");
+            void playSound("start");
           }}
         >
           Play

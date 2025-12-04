@@ -29,27 +29,29 @@ export default function Game({
 
     if (playedIDs.find((id) => id === selectedID)) {
       // Verify if the character has already been selected and return game over.
-      playSound("lost");
+      void playSound("lost");
       setStatus("lost");
     } else {
       // Update the max score
-      nextPlayedIDs.length > maxScore && setMaxScore(nextPlayedIDs.length);
+      if (nextPlayedIDs.length > maxScore) {
+        setMaxScore(nextPlayedIDs.length);
+      }
 
       // Verify if the user reached the max score an return game won.
       if (characters.length === nextPlayedIDs.length) {
-        playSound("won");
+        void playSound("won");
         setStatus("won");
       }
 
       // Add the character to the list of playedIDs
-      playSound("click");
+      void playSound("click");
       setPlayedIDs(nextPlayedIDs);
     }
   }
 
   // Handler to restart the game
   function handleRestart() {
-    playSound("restart");
+    void playSound("restart");
 
     // Clear the playedIDs state
     const nextPlayedIDs: number[] = [];

@@ -6,16 +6,18 @@ export default function GameCard({
   handleSelection,
 }: {
   character: Character;
-  handleSelection: Function;
+  handleSelection: (selectedID: number) => void;
 }) {
   function randomDuration(min: number, max: number) {
     const duration = Math.floor(Math.random() * (max - min)) + min;
-    return `${duration}ms`;
+    return `${duration.toString()}ms`;
   }
   return (
     <button
       className={classes.card}
-      onClick={() => handleSelection(character.id)}
+      onClick={() => {
+        handleSelection(character.id);
+      }}
     >
       <div
         className={classes.cardWrapper}
