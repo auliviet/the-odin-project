@@ -1,0 +1,12 @@
+.error {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  & p {
+    color: var(--grey);
+    text-transform: uppercase;
+  }
+}

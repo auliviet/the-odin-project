@@ -1,0 +1,44 @@
+.cartOverlay {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  width: 100vw;
+  height: calc(100vh - 5px);
+  background-color: var(--black-transparent);
+
+  & .cartContent {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    width: calc(100% - 5px);
+    margin-top: 3rem;
+    padding: 40px;
+    color: var(--white);
+    overflow-x: scroll;
+    background-color: var(--black);
+    border-top: 5px solid var(--white);
+    border-bottom: 5px solid var(--white);
+    border-left: 5px solid var(--white);
+
+    @media (min-width: 1024px) {
+      width: max(33vw, 300px);
+    }
+
+    & .emptyCart {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    & .list {
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+.nav {
+  z-index: 1;
+  display: flex;
+  flex-flow: row;
+  gap: 60px;
+  position: sticky;
+  top: 0;
+  background-color: var(--black);
+  border-bottom: solid 5px var(--white);
+  border-top: solid 5px var(--white);
+
+  & .mainNav {
+    flex: 1;
+    display: flex;
+    gap: 60px;
+    padding: 1rem 20px;
+
+    & h1 {
+      font-size: 1rem;
+    }
+
+    & .navLinks {
+      flex: 1;
+      display: none;
+
+      @media (min-width: 1024px) {
+        display: flex;
+        flex-flow: row;
+        gap: 60px;
+        padding: 0;
+        list-style: none;
+      }
+
+      & li {
+        line-height: 1rem;
+      }
+
+      & a {
+        color: var(--grey);
+        text-decoration: none;
+
+        &.active,
+        &:hover {
+          color: var(--white);
+        }
+      }
+    }
+  }
+}

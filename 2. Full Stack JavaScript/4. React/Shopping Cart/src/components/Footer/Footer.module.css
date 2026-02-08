@@ -1,0 +1,29 @@
+.footer {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 120px;
+  padding-top: 5px;
+  background-color: var(--yellow);
+
+  & .scrollingText {
+    white-space: nowrap;
+    display: flex;
+    gap: 1ch;
+    animation: scrolling-text 20s linear infinite;
+
+    & p {
+      display: flex;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      font-weight: bold;
+      transform: translateX(0);
+    }
+  }
+}
+
+@keyframes scrolling-text {
+  to {
+    transform: translateX(-50%);
+  }
+}
