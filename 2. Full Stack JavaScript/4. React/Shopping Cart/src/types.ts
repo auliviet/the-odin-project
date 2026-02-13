@@ -6,3 +6,9 @@ export interface Product {
   category: string;
   image: string;
 }
+
+export interface contextType {
+  products: Product[];
+  cart: [];
+  setCart: React.SetStateAction<[]>;
+}

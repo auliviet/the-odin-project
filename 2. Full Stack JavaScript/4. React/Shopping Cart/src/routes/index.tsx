@@ -1,5 +1,5 @@
 import type { RouteObject } from "react-router";
-import Root from "./root";
+import Root, { loader as rootLoader } from "./root";
 import Home from "./home";
 import ErrorPage from "./error";
 import Products from "./products";
@@ -9,6 +9,7 @@ const routes: RouteObject[] = [
   {
     path: "/",
     element: <Root />,
+    loader: rootLoader,
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
@@ -17,7 +18,7 @@ const routes: RouteObject[] = [
         element: <Products />,
       },
       {
-        path: "products/:product",
+        path: "products/:productId",
         element: <ProductPage />,
       },
     ],
