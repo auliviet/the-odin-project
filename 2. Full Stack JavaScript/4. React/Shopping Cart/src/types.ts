@@ -9,6 +9,5 @@ export interface Product {
 
 export interface contextType {
   products: Product[];
-  cart: [];
-  setCart: React.SetStateAction<[]>;
+  cart: number[];
 }

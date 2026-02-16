@@ -6,7 +6,7 @@ export function ProductCard({
   productId,
   products,
 }: {
-  productId: number | string;
+  productId: number | string | undefined;
   products: Product[];
 }) {
   const product = getProduct(productId, products);

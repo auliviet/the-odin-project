@@ -21,7 +21,7 @@ export async function getAllProducts(
 }
 
 export function getProduct(
-  productId: string | number,
+  productId: string | number | undefined,
   products: Product[],
 ): Product | undefined {
   const index = Number(productId);

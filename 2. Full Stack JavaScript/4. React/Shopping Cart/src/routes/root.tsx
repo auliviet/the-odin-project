@@ -1,26 +1,37 @@
+/* eslint-disable react-refresh/only-export-components */
+import { getCart, setEmptyCart } from "@/components/Cart";
 import Navigation from "@/components/Navigation";
 import { getAllProducts } from "@/components/Products";
-import { useState } from "react";
+import type { Product } from "@/types";
 import { useLoaderData } from "react-router";
 import { Outlet, useLocation } from "react-router";
 
 export async function loader() {
   const products = await getAllProducts("https://fakestoreapi.com/products");
+  const cart = getCart();
 
-  return { products };
+  if (cart.length !== products?.length) {
+    const emptyCart = setEmptyCart(products?.length);
+
+    return { products, cart: emptyCart };
+  }
+
+  return { products, cart };
 }
 
 export default function Root() {
   const location = useLocation();
-  const { products } = useLoaderData();
-  const [cart, setCart] = useState<number[]>(
-    new Array(products.length).fill(0),
-  );
+  const { products, cart } = useLoaderData<{
+    products: Product[];
+    cart: number[];
+  }>();
 
   return (
     <>
-      {location.pathname !== "/" && <Navigation />}
-      <Outlet context={{ products, cart, setCart }} />
+      {location.pathname !== "/" && (
+        <Navigation cart={cart} products={products} />
+      )}
+      <Outlet context={{ products, cart }} />
     </>
   );
 }

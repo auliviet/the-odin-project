@@ -1,7 +1,14 @@
 import { NavLink } from "react-router";
 import NavCart from "./NavCart";
+import type { Product } from "@/types";
 
-export default function Navigation() {
+export default function Navigation({
+  cart,
+  products,
+}: {
+  cart: number[];
+  products: Product[];
+}) {
   return (
     <nav>
       <div className="navLogo">
@@ -21,7 +28,7 @@ export default function Navigation() {
         </ul>
       </div>
 
-      <NavCart cartCount={0} />
+      <NavCart cart={cart} products={products} />
     </nav>
   );
 }

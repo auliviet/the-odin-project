@@ -3,7 +3,7 @@ import Root, { loader as rootLoader } from "./root";
 import Home from "./home";
 import ErrorPage from "./error";
 import Products from "./products";
-import ProductPage from "./productPage";
+import ProductPage, { action as productPageAction } from "./productPage";
 
 const routes: RouteObject[] = [
   {
@@ -20,6 +20,7 @@ const routes: RouteObject[] = [
       {
         path: "products/:productId",
         element: <ProductPage />,
+        action: productPageAction,
       },
     ],
   },
