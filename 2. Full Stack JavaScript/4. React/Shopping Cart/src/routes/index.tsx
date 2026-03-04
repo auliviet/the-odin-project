@@ -14,11 +14,11 @@ const routes: RouteObject[] = [
     children: [
       { index: true, element: <Home /> },
       {
-        path: "products",
+        path: "/products",
         element: <Products />,
       },
       {
-        path: "products/:productId",
+        path: "/products/:productId",
         element: <ProductPage />,
         action: productPageAction,
       },

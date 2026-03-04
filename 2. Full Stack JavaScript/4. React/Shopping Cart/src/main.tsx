@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createHashRouter, RouterProvider } from "react-router";
 import routes from "@/routes";
 
-const router = createBrowserRouter(routes);
+const router = createHashRouter(routes);
 const root = document.getElementById("root");
 
 if (root) {

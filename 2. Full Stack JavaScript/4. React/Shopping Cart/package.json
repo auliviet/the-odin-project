@@ -10,6 +10,7 @@
     "test": "vitest",
     "preview": "vite preview"
   },
+  "homepage": "https://auliviet.github.io/the-odin-project",
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

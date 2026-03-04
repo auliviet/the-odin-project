@@ -5,7 +5,7 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/the-odin-project/shopping-cart/",
+  base: "/the-odin-project/shopping-cart",
   plugins: [react()],
   resolve: {
     alias: {

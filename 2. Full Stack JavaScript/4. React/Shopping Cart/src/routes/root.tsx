@@ -26,11 +26,14 @@ export default function Root() {
     cart: number[];
   }>();
 
+  console.log(location.pathname);
+
   return (
     <>
-      {location.pathname !== "/" && (
-        <Navigation cart={cart} products={products} />
-      )}
+      {location.pathname !== "/the-odin-project/shopping-cart/" &&
+        location.pathname !== "/the-odin-project/shopping-cart" && (
+          <Navigation cart={cart} products={products} />
+        )}
       <main>
         <Outlet context={{ products, cart }} />
       </main>
