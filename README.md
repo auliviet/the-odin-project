@@ -39,6 +39,10 @@ Toodoo is a simple todo list that organise tasks based on their due date and pri
 
 ### Full Stack JavaScript path
 
+Node
+
+- [Basic Informational Site](2.%20Full%20Stack%20JavaScript/5.%20Node/Basic%20Informational%20Site)
+
 React
 
 - [CV App](2.%20Full%20Stack%20JavaScript/4.%20React/CV%20Application)
