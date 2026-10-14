@@ -1,0 +1,10 @@
+<html>
+  <body>
+    <%- include("components/nav", {links: links}) %>
+
+    <h1>Authors</h1>
+    <ul>
+      <% books.map(book => { %> <li><a href="books/<%= book.id %>"><%= book.name %></a></li> <% }) %>
+    </ul>
+  </body>
+</html>
