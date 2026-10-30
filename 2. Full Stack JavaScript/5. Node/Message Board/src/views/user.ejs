@@ -1,0 +1,13 @@
+<%- include("components/header", {title: "Home"}) %>
+
+<h1><%= user %>'s messages:</h1>
+
+<div class="postWrapper">
+  <ul class="postList">
+   <% messages.forEach(message => { %>
+    <%- include("components/message", {message}) %>
+   <% }); %>
+  </ul>
+</div>
+
+<%- include("components/footer") %>

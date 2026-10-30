@@ -1,0 +1,16 @@
+<%- include("components/header", {title: "Home"}) %>
+
+<h1>Users</h1>
+
+<div class="postWrapper">
+   <ul class="postList">
+    <% Object.entries(users).forEach(user => { %>
+       <li class="post">
+         <span class="user"><a href="<%= process.env.BASE_PATH %>/users/<%= user[0] %>"><%= user[0] %></a>:</span>
+         <%= user[1] %> messages
+      </li>
+    <% }); %>
+   </ul>
+</div>
+
+<%- include("components/footer") %>

@@ -1,0 +1,8 @@
+<li class="post">
+  <span class="user">
+    <a href="<%= process.env.BASE_PATH %>/users/<%= message.user %>"><%= message.user %></a>:
+  </span> 
+  
+  <span class="text"><%= message.text %></span>
+  <span class="added">Posted on: <%= message.added.getFullYear() %> - <%= message.added.getMonth() + 1 %> - <%= message.added.getDate() %></span>
+</li>

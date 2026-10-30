@@ -41,6 +41,8 @@ Toodoo is a simple todo list that organise tasks based on their due date and pri
 
 Node
 
+- [Mini Message Board](2.%20Full%20Stack%20JavaScript/5.%20Node/Message%20Board)
+- [Basic Informational Site - Express](2.%20Full%20Stack%20JavaScript/5.%20Node/Basic%20Informational%20Site%20-%20Express)
 - [Basic Informational Site](2.%20Full%20Stack%20JavaScript/5.%20Node/Basic%20Informational%20Site)
 
 React

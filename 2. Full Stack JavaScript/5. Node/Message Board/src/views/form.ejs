@@ -1,0 +1,19 @@
+<%- include("components/header", {title: "Post"}) %>
+
+<h1>New message:</h1>
+
+<form method="post" action="<%= process.env.BASE_PATH %>/new">
+  <label>
+    Author:
+    <input type="text" name="user">
+  </label>
+
+  <label>
+    Message:
+    <textarea name="text"></textarea>
+  </label>
+
+  <button type="submit">Send</button>
+</form>
+
+<%- include("components/footer") %>

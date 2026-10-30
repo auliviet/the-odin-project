@@ -1,0 +1,10 @@
+<%- include("components/header", {title: `${statusCode} - ${message}` }) %>
+
+
+<div class="error">
+  <h1>Error <%= statusCode %></h1>
+  <h1><%= message %></h1>
+</div>
+
+
+<%- include("components/footer") %>
